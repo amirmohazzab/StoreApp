@@ -1,0 +1,14 @@
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\bin\Debug\net8.0\StoreApp.Domain.deps.json
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\bin\Debug\net8.0\StoreApp.Domain.runtimeconfig.json
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\bin\Debug\net8.0\StoreApp.Domain.dll
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\bin\Debug\net8.0\StoreApp.Domain.pdb
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.AssemblyInfo.cs
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.dll
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\refint\StoreApp.Domain.dll
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.pdb
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\StoreApp.Domain.genruntimeconfig.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Domain\obj\Debug\net8.0\ref\StoreApp.Domain.dll

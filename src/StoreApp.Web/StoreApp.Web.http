@@ -1,0 +1,6 @@
+@StoreApp.Web_HostAddress = http://localhost:5173
+
+GET {{StoreApp.Web_HostAddress}}
+Accept: application/json
+
+###
