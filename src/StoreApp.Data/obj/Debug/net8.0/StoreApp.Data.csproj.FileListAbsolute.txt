@@ -15,3 +15,4 @@ C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Da
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\refint\StoreApp.Data.dll
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.pdb
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\ref\StoreApp.Data.dll
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.sourcelink.json

@@ -15,3 +15,4 @@ C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Ap
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Application\obj\Debug\net8.0\StoreApp.Application.pdb
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Application\obj\Debug\net8.0\StoreApp.Application.genruntimeconfig.cache
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Application\obj\Debug\net8.0\ref\StoreApp.Application.dll
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Application\obj\Debug\net8.0\StoreApp.Application.sourcelink.json

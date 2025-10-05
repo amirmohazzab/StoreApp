@@ -18,6 +18,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="StackExchange.Redis" Version="2.9.25" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +28,6 @@
     <Folder Include="Features\ProductFeature\Commands\" />
     <Folder Include="Features\ProductFeature\Validators\" />
     <Folder Include="Features\ProductTypeFeature\Commands\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

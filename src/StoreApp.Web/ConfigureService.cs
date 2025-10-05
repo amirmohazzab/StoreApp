@@ -4,12 +4,13 @@ using Microsoft.OpenApi.Models;
 using StoreApp.Data.Persistence.Context;
 using StoreApp.Data.Persistence.SeedData;
 using StoreApp.Domain.Exceptions;
+using StoreApp.Web.Middleware;
 
 namespace StoreApp.Web
 {
     public static class ConfigureService
     {
-        public static IServiceCollection AddWebConfigureServices(this WebApplicationBuilder builder)
+        public static IServiceCollection AddWebConfigureServices(this WebApplicationBuilder builder, IConfiguration configuration)
         {
             builder.Services.AddControllers();
 
@@ -23,6 +24,13 @@ namespace StoreApp.Web
                     Version = "v1"
                 });
             });
+            builder.Services.AddCors(option =>
+            {
+                option.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(configuration["CorsAddress:AddressHttp"]);
+                });
+            });
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddDistributedMemoryCache();
 
@@ -31,6 +39,8 @@ namespace StoreApp.Web
 
         public static async Task<IApplicationBuilder> AddWebAppService(this WebApplication app)
         {
+            app.UseMiddleware<MiddlewareExceptionHandler>();
+            
             #region Auto Migration
 
             //var scope = app.Services.CreateScope();
@@ -58,9 +68,12 @@ namespace StoreApp.Web
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
                 c.RoutePrefix = string.Empty; // swagger روی root بالا بیاد
             });
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
-
+            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

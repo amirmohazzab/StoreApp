@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using StoreApp.Application.Contracts;
 using StoreApp.Application.Dtos.ProductDto;
+using StoreApp.Application.Wrappers;
 using StoreApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Application.Features.ProductFeature.Queries.GetAll
 {
-    public class GetAllProductsQuery : IRequest<IEnumerable<ProductDto>>, ICashQuery
+    public class GetAllProductsQuery : RequestParametersBasic, IRequest<PaginationResponse<ProductDto>>, ICashQuery
     {
-        public int PageId { get; set; }
+        public int? BrandId { get; set; }
 
-        public int HoursSaveData { get; set; }
+        public int? TypeId { get; set; }
+
+        public int HoursSaveData => 1;
     }
 }

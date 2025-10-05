@@ -27,14 +27,14 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.Get
 
         public async Task<ProductDto> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
-            var spec = new GetProductSpec(request.Id);
-            var result = await unitOfWork.Repository<Product>().GetEntityWithSpec(spec, cancellationToken);
-            if (result == null) throw new NotFoundEntityException();
-            return mapper.Map<ProductDto>(result);
+            //var spec = new GetProductSpec(request.Id);
+            //var result = await unitOfWork.Repository<Product>().GetEntityWithSpec(spec, cancellationToken);
+            //if (result == null) throw new NotFoundEntityException();
+            //return mapper.Map<ProductDto>(result);
 
-            //var entity = await unitOfWork.Repository<Product>().GetByIdAsync(request.Id, cancellationToken);
-            //if (entity == null) throw new Exception(message: "error message");
-            //return entity;
+            var entity = await unitOfWork.Repository<Product>().GetByIdAsync(request.Id, cancellationToken);
+            if (entity == null) throw new Exception(message: "error message");
+            return mapper.Map<ProductDto>(entity);
         }
     }
 }

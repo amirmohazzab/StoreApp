@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StoreApp.Domain.Entities;
+using StoreApp.Domain.Entities.Basket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,10 @@ namespace StoreApp.Data.Persistence.Context
         public DbSet<ProductType> ProductTypes { get; set; }
 
         public DbSet<ProductBrand> ProductBrands { get; set; }
+
+        public DbSet<CustomerBasket> CustomerBaskets { get; set; }
+
+        public DbSet<CustomerBasketItem> CustomerBasketItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

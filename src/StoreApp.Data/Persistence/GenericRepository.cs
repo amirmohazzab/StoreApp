@@ -77,5 +77,10 @@ namespace StoreApp.Data.Persistence
         {
             return SpecificationEvaluator<T>.GetQuery(dbSet.AsQueryable(), spec);
         }
+
+        public async Task<int> CountAsyncSpec(ISpecification<T> spec, CancellationToken cancellationToken)
+        {
+            return await ApplySpecification(spec).CountAsync(cancellationToken);
+        }
     }
 }    

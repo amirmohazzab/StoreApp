@@ -1,0 +1,198 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using StackExchange.Redis;
+using StoreApp.Application.Interfaces;
+using StoreApp.Data.Persistence.Context;
+using StoreApp.Domain.Entities.Basket;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace StoreApp.Data.Repositories
+{
+    public class BasketRepository : IBasketRepository
+    {
+        private readonly StoreAppDbContext dbContext;
+
+        public BasketRepository(StoreAppDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
+        public async Task<bool> DeleteBasketAsync(int basketId)
+        {
+            var basket = await dbContext.CustomerBaskets
+           .Include(b => b.Items)
+           .FirstOrDefaultAsync(b => b.Id == basketId);
+
+            if (basket == null) return false;
+
+            dbContext.CustomerBaskets.Remove(basket);
+            await dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<CustomerBasket> GetBasketAsync(int basketId)
+        {
+            return await dbContext.CustomerBaskets
+            .Include(b => b.Items)
+            .FirstOrDefaultAsync(b => b.Id == basketId);
+        }
+
+        public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
+        {
+            CustomerBasket? existingBasket = null;
+
+            if (basket.Id != 0)
+            {
+                existingBasket = await dbContext.CustomerBaskets
+                    .Include(b => b.Items)
+                    .FirstOrDefaultAsync(b => b.Id == basket.Id);
+            }
+
+            if (existingBasket == null)
+            {
+                // سبد جدید → ست Navigation Property روی آیتم‌ها
+                foreach (var item in basket.Items)
+                {
+                    item.Basket = basket; // EF Core خودش BasketId را پر می‌کند
+                }
+
+                await dbContext.CustomerBaskets.AddAsync(basket);
+            }
+            else
+            {
+                // بروزرسانی آیتم‌ها
+                var itemsToRemove = existingBasket.Items
+                    .Where(oldItem =>
+                        basket.Items.All(newItem => newItem.ProductId != oldItem.ProductId) ||
+                        basket.Items.Any(newItem => newItem.ProductId == oldItem.ProductId && newItem.Quantity == 0))
+                    .ToList();
+
+                dbContext.CustomerBasketItems.RemoveRange(itemsToRemove);
+
+                // بروزرسانی آیتم‌های موجود
+                foreach (var existingItem in existingBasket.Items)
+                {
+                    var updatedItem = basket.Items
+                        .FirstOrDefault(i => i.ProductId == existingItem.ProductId && i.Quantity > 0);
+
+                    if (updatedItem != null)
+                    {
+                        existingItem.Quantity = updatedItem.Quantity;
+                        existingItem.Price = updatedItem.Price;
+                        existingItem.ProductName = updatedItem.ProductName;
+                        existingItem.Discount = updatedItem.Discount;
+                        existingItem.Brand = updatedItem.Brand;
+                        existingItem.Type = updatedItem.Type;
+                        existingItem.PictureUrl = updatedItem.PictureUrl;
+                    }
+                }
+
+                // اضافه کردن آیتم‌های جدید
+                var itemsToAdd = basket.Items
+                    .Where(newItem =>
+                        newItem.Quantity > 0 &&
+                        existingBasket.Items.All(oldItem => oldItem.ProductId != newItem.ProductId))
+                    .ToList();
+
+                foreach (var newItem in itemsToAdd)
+                {
+                    newItem.Basket = existingBasket;
+                    existingBasket.Items.Add(newItem);
+                }
+            }
+
+            await dbContext.SaveChangesAsync();
+            return basket;
+        }
+    
+        //public async Task<CustomerBasket> GetBasketAsync(int userId)
+        //{
+        //    return await dbContext.CustomerBaskets
+        //        .Include(b => b.Items)
+        //        .FirstOrDefaultAsync(b => b.UserId == userId);
+        //}
+
+        //// حذف سبد خرید کاربر
+        //public async Task<bool> DeleteBasketAsync(int userId)
+        //{
+        //    var basket = await dbContext.CustomerBaskets
+        //        .Include(b => b.Items)
+        //        .FirstOrDefaultAsync(b => b.UserId == userId);
+
+        //    if (basket == null) return false;
+
+        //    dbContext.CustomerBaskets.Remove(basket);
+        //    await dbContext.SaveChangesAsync();
+        //    return true;
+        //}
+
+        //// ایجاد یا به‌روزرسانی سبد خرید کاربر
+        //public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
+        //{
+        //    // همیشه userId را بررسی یا جایگذاری می‌کنیم
+        //    if (basket.UserId == 0)
+        //        throw new ArgumentException("UserId must be set for the basket.");
+
+        //    var existingBasket = await dbContext.CustomerBaskets
+        //        .Include(b => b.Items)
+        //        .FirstOrDefaultAsync(b => b.UserId == basket.UserId);
+
+        //    if (existingBasket == null)
+        //    {
+        //        // سبد جدید برای کاربر
+        //        await dbContext.CustomerBaskets.AddAsync(basket);
+        //    }
+        //    else
+        //    {
+        //        // بروزرسانی UserId (در صورت نیاز)
+        //        existingBasket.UserId = basket.UserId;
+
+        //        // حذف آیتم‌هایی که Quantity=0 یا دیگر در سبد جدید نیستند
+        //        var itemsToRemove = existingBasket.Items
+        //            .Where(oldItem =>
+        //                basket.Items.All(newItem => newItem.ProductId != oldItem.ProductId) ||
+        //                basket.Items.Any(newItem => newItem.ProductId == oldItem.ProductId && newItem.Quantity == 0))
+        //            .ToList();
+
+        //        dbContext.CustomerBasketItems.RemoveRange(itemsToRemove);
+
+        //        // بروزرسانی آیتم‌های موجود
+        //        foreach (var existingItem in existingBasket.Items)
+        //        {
+        //            var updatedItem = basket.Items
+        //                .FirstOrDefault(i => i.ProductId == existingItem.ProductId && i.Quantity > 0);
+
+        //            if (updatedItem != null)
+        //            {
+        //                existingItem.Quantity = updatedItem.Quantity;
+        //                existingItem.Price = updatedItem.Price;
+        //                existingItem.ProductName = updatedItem.ProductName;
+        //            }
+        //        }
+
+        //        // اضافه کردن آیتم‌های جدید
+        //        var itemsToAdd = basket.Items
+        //            .Where(newItem =>
+        //                newItem.Quantity > 0 &&
+        //                existingBasket.Items.All(oldItem => oldItem.ProductId != newItem.ProductId))
+        //            .ToList();
+
+        //        foreach (var newItem in itemsToAdd)
+        //        {
+        //            existingBasket.Items.Add(newItem);
+        //        }
+
+        //        dbContext.CustomerBaskets.Update(existingBasket);
+        //    }
+
+        //    await dbContext.SaveChangesAsync();
+        //    return basket;
+        //}
+    }
+}

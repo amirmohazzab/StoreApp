@@ -10,10 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationServices();
 builder.Services.AddDataServices(builder.Configuration);
-builder.AddWebConfigureServices();
+builder.AddWebConfigureServices(builder.Configuration);
 
 var app = builder.Build();
-app.UseMiddleware<MiddlewareExceptionHandler>();
 
-app.UseStaticFiles();
 await app.AddWebAppService().ConfigureAwait(false);

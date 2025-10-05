@@ -12,8 +12,8 @@ using StoreApp.Data.Persistence.Context;
 namespace StoreApp.Data.Migrations
 {
     [DbContext(typeof(StoreAppDbContext))]
-    [Migration("20250920194106_AddProductTypeAndProductBrandAndEditProductTbls")]
-    partial class AddProductTypeAndProductBrandAndEditProductTbls
+    [Migration("20251002202444_AddProductAndBasketTbls")]
+    partial class AddProductAndBasketTbls
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,73 @@ namespace StoreApp.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomerBaskets");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Discount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PictureUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.ToTable("CustomerBasketItems");
+                });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
                 {
@@ -181,6 +248,17 @@ namespace StoreApp.Data.Migrations
                     b.ToTable("ProductTypes");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasketItem", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Basket.CustomerBasket", "Basket")
+                        .WithMany("Items")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
                 {
                     b.HasOne("StoreApp.Domain.Entities.ProductBrand", "ProductBrand")
@@ -198,6 +276,11 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("ProductBrand");
 
                     b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasket", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

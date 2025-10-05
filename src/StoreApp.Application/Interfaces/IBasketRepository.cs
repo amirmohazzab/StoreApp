@@ -1,0 +1,18 @@
+﻿using StoreApp.Domain.Entities.Basket;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreApp.Application.Interfaces
+{
+    public interface IBasketRepository
+    {
+        Task<CustomerBasket> GetBasketAsync(int basketId);
+
+        Task<CustomerBasket> UpdateBasketAsync(CustomerBasket customerBasket);
+
+        Task<bool> DeleteBasketAsync(int basketId);
+    }
+}

@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using StoreApp.Application.Contracts;
+using StoreApp.Application.Interfaces;
 using StoreApp.Data.Persistence;
 using StoreApp.Data.Persistence.Context;
+using StoreApp.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +28,14 @@ namespace StoreApp.Data
             });
 
             //services.AddScoped(typeof(IGenericRepository<>), typeof(IGenericRepository<>));
+            //services.AddSingleton<IConnectionMultiplexer>(opt =>
+            //{
+            //    var config = ConfigurationOptions.Parse(configuration.GetConnectionString("Redis"), ignoreUnknown: true);
+            //    return ConnectionMultiplexer.Connect(config);
+            //});
+
+            services.AddScoped<IBasketRepository, BasketRepository>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }

@@ -11,15 +11,16 @@ namespace StoreApp.Web.Controllers
     public class ProductController : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> Get(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> Get([FromQuery] GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            return Ok(await Mediator.Send(new GetAllProductsQuery(), cancellationToken));
+            return Ok(await Mediator.Send(request, cancellationToken));
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ProductDto>> Get([FromRoute] int id, CancellationToken cancellationToken)
         {
-            return Ok(await Mediator.Send(new GetProductQuery(id), cancellationToken));
+            var result = await Mediator.Send(new GetProductQuery(id), cancellationToken);
+            return Ok(result);
         }
     }
 }
