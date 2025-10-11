@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using StoreApp.Application.Contracts;
 using StoreApp.Data.Persistence.Context;
 using StoreApp.Data.Persistence.SeedData;
 using StoreApp.Domain.Exceptions;
+using StoreApp.Web.Extensions;
 using StoreApp.Web.Middleware;
+using StoreApp.Web.Services;
 
 namespace StoreApp.Web
 {
@@ -16,14 +19,15 @@ namespace StoreApp.Web
 
             ApiBehaviorOptions(builder);
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "My API",
-                    Version = "v1"
-                });
-            });
+            builder.Services.AddSwaggerDocumentation();
+            //builder.Services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo
+            //    {
+            //        Title = "My API",
+            //        Version = "v1"
+            //    });
+            //});
             builder.Services.AddCors(option =>
             {
                 option.AddPolicy("CorsPolicy", policy =>
@@ -31,6 +35,8 @@ namespace StoreApp.Web
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(configuration["CorsAddress:AddressHttp"]);
                 });
             });
+
+            builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddDistributedMemoryCache();
 
@@ -40,7 +46,7 @@ namespace StoreApp.Web
         public static async Task<IApplicationBuilder> AddWebAppService(this WebApplication app)
         {
             app.UseMiddleware<MiddlewareExceptionHandler>();
-            
+
             #region Auto Migration
 
             //var scope = app.Services.CreateScope();
@@ -61,19 +67,19 @@ namespace StoreApp.Web
             #endregion
 
             #region HTTP request pipeline
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
-                c.RoutePrefix = string.Empty; // swagger روی root بالا بیاد
-            });
+            app.UseSwaggerDocumentation();
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
+            //    c.RoutePrefix = string.Empty; // swagger روی root بالا بیاد
+            //});
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

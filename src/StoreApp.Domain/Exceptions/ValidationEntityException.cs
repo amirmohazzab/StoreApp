@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation.Results;
 
 namespace StoreApp.Domain.Exceptions
 {
@@ -17,6 +18,11 @@ namespace StoreApp.Domain.Exceptions
         }
 
         public ValidationEntityException() : base("Error happened, please try again")
+        {
+
+        }
+
+        public ValidationEntityException(IEnumerable<ValidationFailure> validationFailures) : base(validationFailures)
         {
 
         }

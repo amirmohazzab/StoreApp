@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.Basket;
+using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +13,8 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Data.Persistence.Context
 {
-    public class StoreAppDbContext : DbContext
+    public class StoreAppDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>,
+    UserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public StoreAppDbContext(DbContextOptions<StoreAppDbContext> options) : base(options) { }
 
@@ -24,6 +28,14 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<CustomerBasketItem> CustomerBasketItems { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Address> Addresss { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
+
+        public DbSet<UserRole> UserRoles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -32,6 +44,7 @@ namespace StoreApp.Data.Persistence.Context
             modelBuilder.Entity<Product>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<ProductBrand>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<ProductType>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<Address>().HasQueryFilter(p => p.IsDelete == false);
         }
     }
 }

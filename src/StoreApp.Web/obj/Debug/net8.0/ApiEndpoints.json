@@ -1,5 +1,103 @@
 [
   {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "CreateAddresses",
+    "RelativePath": "api/Account/CreateAddress",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "StoreApp.Application.Features.Account.Commands.CreateAddress.CreateAddressCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Application.Dtos.Account.AddressDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "GetAddresses",
+    "RelativePath": "api/Account/GetAddress",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[StoreApp.Application.Dtos.Account.AddressDto, StoreApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "StoreApp.Application.Features.Account.Commands.LoginUser.LoginCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Application.Dtos.Account.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "Register",
+    "RelativePath": "api/Account/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "StoreApp.Application.Features.Account.Commands.RegisterUser.RegisterCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Application.Dtos.Account.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.BasketController",
     "Method": "UpdateBasket",
     "RelativePath": "api/Basket",
@@ -76,6 +174,27 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.BasketController",
+    "Method": "DeleteItem",
+    "RelativePath": "api/Basket/{basketId}/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basketId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.ProductController",

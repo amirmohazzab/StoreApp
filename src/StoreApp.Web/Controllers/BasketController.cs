@@ -30,7 +30,7 @@ namespace StoreApp.Web.Controllers
         }
 
 
-        [HttpDelete("{basketId: int}/{id: int}")]
+        [HttpDelete("{basketId:int}/{id:int}")]
         public async Task<IActionResult> DeleteItem([FromRoute] int basketId, [FromRoute] int id, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(new DeleteItemCommand(basketId, id), cancellationToken));

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using StackExchange.Redis;
 using StoreApp.Application.Interfaces;
 using StoreApp.Data.Persistence.Context;
 using StoreApp.Domain.Entities.Basket;

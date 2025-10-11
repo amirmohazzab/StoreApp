@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,11 @@ namespace StoreApp.Domain.Exceptions
         public BaseException(string message) : base(message)
         {
             
+        }
+
+        public BaseException(IEnumerable<ValidationFailure> validationFailures)
+        {
+            Messages = validationFailures.Select(x => x.ErrorMessage).ToList();
         }
     }
 }

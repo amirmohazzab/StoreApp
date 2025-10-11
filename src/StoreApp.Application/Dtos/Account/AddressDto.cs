@@ -1,0 +1,31 @@
+﻿using StoreApp.Application.Common.Mapping;
+using StoreApp.Domain.Entities.User;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreApp.Application.Dtos.Account
+{
+    public class AddressDto : IMapFrom<Address>
+    {
+        public int Id { get; set; }
+
+        public bool IsMAIN { get; set; }
+
+        public string State { get; set; }
+
+        public string City { get; set; }
+
+        public string FullName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string FullAddress { get; set; }
+
+        public string Number { get; set; }
+
+        public string PostalCode { get; set; }
+    }
+}
