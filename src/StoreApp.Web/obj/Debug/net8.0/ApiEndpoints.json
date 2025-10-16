@@ -197,6 +197,135 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "StoreApp.Web.Controllers.OrderController",
+    "Method": "CeateOrder",
+    "RelativePath": "api/Order/CreateOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "StoreApp.Application.Features.OrderFeature.Commands.Create.CreateOrderCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Application.Dtos.OrderDto.OrderDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.OrderController",
+    "Method": "GetDeliveryMethodById",
+    "RelativePath": "api/Order/GetDeliveryMethodById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Domain.Entities.Order.DeliveryMethod",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.OrderController",
+    "Method": "GetDeliveryMethods",
+    "RelativePath": "api/Order/GetDeliveryMethods",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[StoreApp.Domain.Entities.Order.DeliveryMethod, StoreApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.OrderController",
+    "Method": "GetOrderByIdForUser",
+    "RelativePath": "api/Order/GetOrderByIdForUser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.OrderController",
+    "Method": "GetOrdersForUser",
+    "RelativePath": "api/Order/GetOrdersForUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[StoreApp.Application.Dtos.OrderDto.OrderDto, StoreApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.OrderController",
+    "Method": "Verify",
+    "RelativePath": "api/Order/Verify",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "authority",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.ProductController",
     "Method": "Get",
     "RelativePath": "api/Product",

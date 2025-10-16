@@ -30,5 +30,7 @@ namespace StoreApp.Domain.Entities
         public ProductBrand ProductBrand { get; set; }
 
         public ProductType ProductType { get; set; }
+
+        public User.User User { get; set; }
     }
 }

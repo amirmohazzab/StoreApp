@@ -15,9 +15,9 @@ namespace StoreApp.Application.Contracts
 
         Task<IReadOnlyList<T>> GetAllAsync(CancellationToken cancellationToken);
 
-        Task<T> AddEntity(T entity, CancellationToken cancellationToken);
+        Task<T> AddAsync(T entity, CancellationToken cancellationToken);
 
-        Task<T> UpdateEntity(T entity);
+        Task<T> UpdateAsync(T entity);
 
         Task Delete(T entity, CancellationToken cancellationToken);
 
@@ -30,5 +30,9 @@ namespace StoreApp.Application.Contracts
         Task<IReadOnlyList<T>> ListAsyncSpec(ISpecification<T> spec, CancellationToken cancellationToken);
 
         Task<int> CountAsyncSpec(ISpecification<T> spec, CancellationToken cancellationToken);
+
+        IQueryable<T> Where(Expression<Func<T, bool>> expression);
+
+        Task<List<T>> ToListAsync(CancellationToken cancellationToken);
     }
 }

@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.data\\security\\identityserviceextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|solutionrelative:src\\storeapp.data\\security\\identityserviceextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\orderfeature\\commands\\create\\createordercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\orderfeature\\commands\\create\\createordercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +22,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\StoreApp.Web\\appsettings.json",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\appsettings.json",
-              "RelativeToolTip": "src\\StoreApp.Web\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-08T20:33:25.358Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IdentityServiceExtension.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Security\\IdentityServiceExtension.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Data\\Security\\IdentityServiceExtension.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Security\\IdentityServiceExtension.cs",
-              "RelativeToolTip": "src\\StoreApp.Data\\Security\\IdentityServiceExtension.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Title": "CreateOrderCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T18:43:57.211Z",
+              "WhenOpened": "2025-10-16T04:49:18.739Z",
               "EditorCaption": ""
             }
           ]

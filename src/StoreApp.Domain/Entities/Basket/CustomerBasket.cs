@@ -10,8 +10,11 @@ namespace StoreApp.Domain.Entities.Basket
     {
         public int Id { get; set; }
 
-        public int? UserId { get; set; } 
-
         public List<CustomerBasketItem> Items { get; set; } = new();
+
+        public decimal CalculateOriginalPrice()
+        {
+            return Items.Sum(x => x.Price + x.Quantity);
+        }
     }
 }

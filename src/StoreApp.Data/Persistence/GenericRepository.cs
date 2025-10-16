@@ -34,13 +34,13 @@ namespace StoreApp.Data.Persistence
             return await dbSet.ToListAsync(cancellationToken);
         }
 
-        public async Task<T> AddEntity(T entity, CancellationToken cancellationToken)
+        public async Task<T> AddAsync(T entity, CancellationToken cancellationToken)
         {
             await dbSet.AddAsync(entity, cancellationToken);
             return await Task.FromResult(entity);
         }
 
-        public Task<T> UpdateEntity(T entity)
+        public Task<T> UpdateAsync(T entity)
         {
             dbContext.Entry(entity).State = EntityState.Modified;
             return Task.FromResult(entity);
@@ -50,7 +50,7 @@ namespace StoreApp.Data.Persistence
         {
             var record = await GetByIdAsync(entity.Id, cancellationToken);
             record.IsDelete = true;
-            UpdateEntity(entity);
+            UpdateAsync(entity);
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken)
@@ -81,6 +81,16 @@ namespace StoreApp.Data.Persistence
         public async Task<int> CountAsyncSpec(ISpecification<T> spec, CancellationToken cancellationToken)
         {
             return await ApplySpecification(spec).CountAsync(cancellationToken);
+        }
+
+        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
+        {
+            return dbSet.Where(expression);
+        }
+
+        public async Task<List<T>> ToListAsync(CancellationToken cancellationToken)
+        {
+            return await dbSet.ToListAsync(cancellationToken);
         }
     }
 }    

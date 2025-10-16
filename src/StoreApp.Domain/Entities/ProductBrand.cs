@@ -18,5 +18,7 @@ namespace StoreApp.Domain.Entities
         public bool IsDelete { get; set; } = false;
 
         public string Summary { get; set; }
+
+        public User.User User { get; set; }
     }
 }

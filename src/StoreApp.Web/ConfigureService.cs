@@ -18,16 +18,9 @@ namespace StoreApp.Web
             builder.Services.AddControllers();
 
             ApiBehaviorOptions(builder);
-            builder.Services.AddEndpointsApiExplorer();
+
             builder.Services.AddSwaggerDocumentation();
-            //builder.Services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo
-            //    {
-            //        Title = "My API",
-            //        Version = "v1"
-            //    });
-            //});
+            
             builder.Services.AddCors(option =>
             {
                 option.AddPolicy("CorsPolicy", policy =>
@@ -47,33 +40,10 @@ namespace StoreApp.Web
         {
             app.UseMiddleware<MiddlewareExceptionHandler>();
 
-            #region Auto Migration
-
-            //var scope = app.Services.CreateScope();
-            //var services = scope.ServiceProvider;
-            //var context = services.GetRequiredService<StoreAppDbContext>();
-            //var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-            //try
-            //{
-            //    await context.Database.MigrateAsync();
-            //    await GenerateFakeData.SeedDataAsync(context, loggerFactory);
-            //}
-            //catch (Exception e)
-            //{
-            //    var logger = loggerFactory.CreateLogger<Program>();
-            //    logger.LogError(e, "Error Exception for migrations");
-            //}
-
-            #endregion
-
             #region HTTP request pipeline
+
             app.UseSwaggerDocumentation();
-            //app.UseSwagger();
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
-            //    c.RoutePrefix = string.Empty; // swagger روی root بالا بیاد
-            //});
+           
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("CorsPolicy");

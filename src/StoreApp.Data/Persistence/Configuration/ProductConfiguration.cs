@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StoreApp.Domain.Entities;
+using StoreApp.Domain.Entities.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace StoreApp.Data.Persistence.Configuration
             builder.Property(p => p.Description).HasMaxLength(500);
             builder.Property(p => p.Title).HasMaxLength(100);
             builder.Property(p => p.Summary).HasMaxLength(100);
+            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.CreatedBy);
+            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.LastModifiedBy);
         }
     }
 }

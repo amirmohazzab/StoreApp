@@ -121,9 +121,6 @@ namespace StoreApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("CustomerBaskets");
@@ -180,6 +177,162 @@ namespace StoreApp.Data.Migrations
                     b.ToTable("CustomerBasketItems");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.DeliveryMethod", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DeliveryDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ShortName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeliveryMethods");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Authority")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BuyerPhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DeliveryMethodId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFinally")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PortalType")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("TrackingCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryMethodId");
+
+                    b.HasIndex("LastModifiedBy");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.Portal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<long>("Amount")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Gateway")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReferenceId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
+
+                    b.ToTable("Portal");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -191,8 +344,8 @@ namespace StoreApp.Data.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -205,11 +358,11 @@ namespace StoreApp.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastModified")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PictureUrl")
                         .IsRequired()
@@ -237,6 +390,8 @@ namespace StoreApp.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LastModifiedBy");
+
                     b.HasIndex("ProductBrandId");
 
                     b.HasIndex("ProductTypeId");
@@ -255,8 +410,8 @@ namespace StoreApp.Data.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -269,11 +424,11 @@ namespace StoreApp.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastModified")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Summary")
                         .IsRequired()
@@ -286,6 +441,8 @@ namespace StoreApp.Data.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LastModifiedBy");
 
                     b.ToTable("ProductBrands");
                 });
@@ -301,8 +458,8 @@ namespace StoreApp.Data.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -315,11 +472,11 @@ namespace StoreApp.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastModified")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LastModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Summary")
                         .IsRequired()
@@ -332,6 +489,8 @@ namespace StoreApp.Data.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LastModifiedBy");
 
                     b.ToTable("ProductTypes");
                 });
@@ -553,8 +712,127 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("Basket");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.Order", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Order.DeliveryMethod", "DeliveryMethod")
+                        .WithMany()
+                        .HasForeignKey("DeliveryMethodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedBy");
+
+                    b.OwnsOne("StoreApp.Domain.Entities.Order.ShipToAddress", "ShipToAddress", b1 =>
+                        {
+                            b1.Property<int>("OrderId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("City")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("FirstName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("FullAddress")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("LastName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Number")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("PostalCode")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("State")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("OrderId");
+
+                            b1.ToTable("Orders");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderId");
+                        });
+
+                    b.Navigation("DeliveryMethod");
+
+                    b.Navigation("ShipToAddress")
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.OrderItem", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Order.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.OwnsOne("StoreApp.Domain.Entities.Order.ProductItemOrdered", "ItemOrdered", b1 =>
+                        {
+                            b1.Property<int>("OrderItemId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("PictureUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("ProductBrandName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<int>("ProductItemId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("ProductName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("ProductTypeName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("OrderItemId");
+
+                            b1.ToTable("OrderItems");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderItemId");
+                        });
+
+                    b.Navigation("ItemOrdered")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.Portal", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Order.Order", "Order")
+                        .WithOne("Portal")
+                        .HasForeignKey("StoreApp.Domain.Entities.Order.Portal", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
                 {
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedBy");
+
                     b.HasOne("StoreApp.Domain.Entities.ProductBrand", "ProductBrand")
                         .WithMany()
                         .HasForeignKey("ProductBrandId")
@@ -570,6 +848,26 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("ProductBrand");
 
                     b.Navigation("ProductType");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.ProductBrand", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedBy");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.ProductType", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedBy");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.User.Address", b =>
@@ -605,6 +903,14 @@ namespace StoreApp.Data.Migrations
             modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasket", b =>
                 {
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Order.Order", b =>
+                {
+                    b.Navigation("OrderItems");
+
+                    b.Navigation("Portal")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.User.Role", b =>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.Basket;
+using StoreApp.Domain.Entities.Order;
 using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,12 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<UserRole> UserRoles { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -45,6 +52,10 @@ namespace StoreApp.Data.Persistence.Context
             modelBuilder.Entity<ProductBrand>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<ProductType>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<Address>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<Order>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<DeliveryMethod>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<OrderItem>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<Portal>().HasQueryFilter(p => p.IsDelete == false);
         }
     }
 }
