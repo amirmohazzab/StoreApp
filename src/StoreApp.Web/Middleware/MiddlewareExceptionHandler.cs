@@ -7,10 +7,13 @@ namespace StoreApp.Web.Middleware
     public class MiddlewareExceptionHandler
     {
         private readonly IWebHostEnvironment env;
-        private readonly ILoggerFactory logger;
+        private readonly ILogger<MiddlewareExceptionHandler> logger;
         private readonly RequestDelegate next;
 
-        public MiddlewareExceptionHandler(IWebHostEnvironment env, ILoggerFactory logger, RequestDelegate next)
+        public MiddlewareExceptionHandler(
+            IWebHostEnvironment env, 
+            ILogger<MiddlewareExceptionHandler> logger, 
+            RequestDelegate next)
         {
             this.env = env;
             this.logger = logger;
@@ -25,8 +28,9 @@ namespace StoreApp.Web.Middleware
             }
             catch (Exception exception)
             {
+                
                 var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-
+                
                 var result = HandleServerError(context, exception, options);
 
                 result = HandleResult(context, exception, result, options);
@@ -49,17 +53,23 @@ namespace StoreApp.Web.Middleware
             {
                 case NotFoundEntityException notFoundEntityException:
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    result = JsonSerializer.Serialize(new ApiToReturn(404, notFoundEntityException.Message, notFoundEntityException.Messages, exception.Message), options);
+                    result = JsonSerializer.Serialize(new ApiToReturn(404,
+                        notFoundEntityException.Message, notFoundEntityException.Messages,
+                        exception.Message), options);
                     break;
 
                 case BadRequestEntityException badRequestEntityException:
-                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    result = JsonSerializer.Serialize(new ApiToReturn(400, badRequestEntityException.Message, badRequestEntityException.Messages, exception.Message), options);
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    result = JsonSerializer.Serialize(new ApiToReturn(400, 
+                        badRequestEntityException.Message, badRequestEntityException.Messages,
+                        exception.Message), options);
                     break;
 
                 case ValidationEntityException validationEntityException:
-                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    result = JsonSerializer.Serialize(new ApiToReturn(400, validationEntityException.Message, validationEntityException.Messages, exception.Message), options);
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    result = JsonSerializer.Serialize(new ApiToReturn(400,
+                        validationEntityException.Message, validationEntityException.Messages,
+                        exception.Message), options);
                     break;
             }
 

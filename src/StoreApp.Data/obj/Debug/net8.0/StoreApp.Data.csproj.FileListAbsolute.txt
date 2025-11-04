@@ -1,3 +1,9 @@
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.AssemblyInfo.cs
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.sourcelink.json
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\bin\Debug\net8.0\StoreApp.Data.deps.json
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\bin\Debug\net8.0\StoreApp.Data.dll
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\bin\Debug\net8.0\StoreApp.Data.pdb
@@ -5,12 +11,6 @@ C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Da
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\bin\Debug\net8.0\StoreApp.Domain.dll
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\bin\Debug\net8.0\StoreApp.Application.pdb
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\bin\Debug\net8.0\StoreApp.Domain.pdb
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.csproj.AssemblyReference.cache
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.AssemblyInfoInputs.cache
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.AssemblyInfo.cs
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.csproj.CoreCompileInputs.cache
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.sourcelink.json
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.B6C7A684.Up2Date
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\StoreApp.Data.dll
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Data\obj\Debug\net8.0\refint\StoreApp.Data.dll

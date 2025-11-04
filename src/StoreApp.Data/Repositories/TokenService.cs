@@ -25,7 +25,14 @@ namespace StoreApp.Data.Repositories
         {
             this.configuration = configuration;
             this.userManager = userManager;
-            this.key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTConfiguration: Key"]));
+            //this.key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTConfiguration: Key"]));
+            var keyString = configuration["JWTConfiguration:Key"];
+            if (string.IsNullOrEmpty(keyString))
+            {
+                throw new ArgumentNullException("JWTConfiguration:Key", "JWT Key cannot be null or empty. Please check your appsettings.json file.");
+            }
+
+            this.key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
         }
 
         public async Task<string> CreateToken(User user)
@@ -49,7 +56,7 @@ namespace StoreApp.Data.Repositories
                 Issuer = configuration["JWTConfiguration:Issuer"],
                 Audience = configuration["JWTConfiguration:Audience"],
                 IssuedAt = DateTime.Now,
-                Expires = DateTime.UtcNow.AddDays(-10),
+                Expires = DateTime.UtcNow.AddDays(10),
                 SigningCredentials = credential,
                 Subject = new ClaimsIdentity(claims)
             };

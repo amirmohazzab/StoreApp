@@ -40,8 +40,6 @@ namespace StoreApp.Application.Features.Account.Queries.GetAddresses
             if (user == null) throw new NotFoundEntityException();
 
             return mapper.Map<IEnumerable<AddressDto>>(user.Addresses);
-
-
         }
     }
 }

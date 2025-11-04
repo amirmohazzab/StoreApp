@@ -8,22 +8,22 @@ namespace StoreApp.Application.Wrappers
 {
     public abstract class PaginationParametersDto
     {
-        private string _Search { get; set; }
+        private const int _MaxPageSize = 50;
 
-        public TypeSort TypeSort { get; set; } = TypeSort.Desc;
+        private int _PageIndex { get; set; } = 1;
 
-        public int Sort { get; set; } = 1;
+        private int _PageSize { get; set; } = 1;
 
-        public string? Search
+        public int PageSize
         {
-            get => _Search;
-            set => _Search = value?.ToLower();
+            get => _PageSize;
+            set => _PageSize = value > _MaxPageSize ? _MaxPageSize : value;
         }
-    }
 
-    public enum TypeSort
-    {
-        Desc = 1,
-        Asc
+        public int PageIndex
+        {
+            get => _PageIndex;
+            set => _PageIndex = value <= 0 ? 1 : value;
+        }
     }
 }

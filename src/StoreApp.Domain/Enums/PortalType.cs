@@ -8,8 +8,10 @@ namespace StoreApp.Domain.Enums
 {
     public enum PortalType
     {
-        Mellat = 1,
+        none = 0,
+        Zarrinpal = 1,
+        Mellat, 
         Parsian,
-        Zarrinpal
+        
     }
 }

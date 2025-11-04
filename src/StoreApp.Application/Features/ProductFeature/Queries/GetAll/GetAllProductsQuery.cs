@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Application.Features.ProductFeature.Queries.GetAll
 {
-    public class GetAllProductsQuery : RequestParametersBasic, IRequest<PaginationResponse<ProductDto>>, ICashQuery
+    public class GetAllProductsQuery : PaginationParametersBasic, IRequest<PaginationResponse<ProductDto>>, ICashQuery
     {
         public int? BrandId { get; set; }
 

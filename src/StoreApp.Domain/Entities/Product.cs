@@ -1,4 +1,5 @@
 ﻿using StoreApp.Domain.Entities.Base;
+using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +33,6 @@ namespace StoreApp.Domain.Entities
         public ProductType ProductType { get; set; }
 
         public User.User User { get; set; }
+
     }
 }

@@ -13,5 +13,6 @@ builder.Services.AddDataServices(builder.Configuration);
 builder.AddWebConfigureServices(builder.Configuration);
 
 var app = builder.Build();
+app.UseDeveloperExceptionPage();
 
 await app.AddWebAppService().ConfigureAwait(false);

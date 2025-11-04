@@ -26,7 +26,7 @@ namespace StoreApp.Data.Security
             services.AddIdentityCore<User>()
                 .AddUserManager<UserManager<User>>()
                 .AddSignInManager<SignInManager<User>>()
-                .AddTokenProvider("MyStoreApp", typeof(DataProtectorTokenProvider<User>))
+                .AddTokenProvider("MyApp", typeof(DataProtectorTokenProvider<User>))
                 .AddRoles<Role>()
                 .AddRoleManager<RoleManager<Role>>()
                 .AddRoleValidator<RoleValidator<Role>>()
@@ -47,39 +47,34 @@ namespace StoreApp.Data.Security
 
         private static TokenValidationParameters OptionsTokenValidationParameters(IConfiguration configuration)
         {
-            //var tt = new TokenValidationParameters
-            //{
-            //    ValidateIssuerSigningKey = true,
-            //    IssuerSigningKey =
-            //        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTConfiguration:Key"] ?? string.Empty)),
-            //    ValidateIssuer = true,
-            //    ValidIssuer = configuration["JWTConfiguration:Issuer"],
-            //    ValidateAudience = Convert.ToBoolean(configuration["JWTConfiguration:Audience"]),
-            //    ValidateLifetime = true,
-            //    ClockSkew = TimeSpan.Zero,
-            //    RequireExpirationTime = true
-            //};
-            //return tt;
-            var keyString = configuration["JWTConfiguration:Key"];
-            if (string.IsNullOrEmpty(keyString))
-                throw new Exception("JWT Key is missing from configuration!");
-
             return new TokenValidationParameters
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString)),
+                //ValidateIssuerSigningKey = true,
+                //IssuerSigningKey =
+                //    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTConfiguration:Key"] ?? string.Empty)),
+                //ValidateIssuer = true,
+                //ValidIssuer = configuration["JWTConfiguration:Issuer"],
+                //ValidateAudience = Convert.ToBoolean(configuration["JWTConfiguration:Audience"]),
+                //ValidateLifetime = true,
+                //ClockSkew = TimeSpan.Zero,
+                //RequireExpirationTime = true
 
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(configuration["JWTConfiguration:Key"] ?? string.Empty)
+                ),
                 ValidateIssuer = true,
                 ValidIssuer = configuration["JWTConfiguration:Issuer"],
 
-                // 👇 این دو خط رو تغییر بده (مشکل از همین بود)
-                ValidateAudience = true,
+                ValidateAudience = configuration.GetValue<bool>("JWTConfiguration:ValidateAudience"),
                 ValidAudience = configuration["JWTConfiguration:Audience"],
 
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero,
+                //ClockSkew = TimeSpan.FromMinutes(5),
                 RequireExpirationTime = true
             };
+
         }
 
         private static JwtBearerEvents JwtOptionsEvents()

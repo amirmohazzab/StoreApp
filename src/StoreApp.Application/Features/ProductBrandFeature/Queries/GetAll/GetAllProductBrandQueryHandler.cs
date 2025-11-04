@@ -21,8 +21,8 @@ namespace StoreApp.Application.Features.ProductBrandFeature.Queries.GetAll
         public async Task<IEnumerable<ProductBrand>> Handle(GetAllProductBrandQuery request, CancellationToken cancellationToken)
         {
             var spec = new GetProductBrandSpec();
-            //return await unitOfWork.Repository<ProductBrand>().ListAsyncSpec(spec, cancellationToken);
-            return await unitOfWork.Repository<ProductBrand>().GetAllAsync(cancellationToken);
+            return await unitOfWork.Repository<ProductBrand>().ListAsyncSpec(spec, cancellationToken);
+            //return await unitOfWork.Repository<ProductBrand>().GetAllAsync(cancellationToken);
         }
     }
 }

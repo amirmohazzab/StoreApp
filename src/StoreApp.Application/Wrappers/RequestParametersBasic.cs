@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Application.Wrappers
 {
-    public abstract class RequestParametersBasic : PaginationParametersDto
+    public abstract class PaginationParametersBasic : PaginationParametersDto
     {
-        private const int _MaxPageSize = 50;
+        private string _Search { get; set; }
 
-        private int _PageIndex { get; set; } = 1;
+        public TypeSort TypeSort { get; set; } = TypeSort.Desc;
 
-        private int _PageSize { get; set; } = 12;
+        public int Sort { get; set; } = 1;
 
-        public int PageSize
+        public string? Search
         {
-            get => _PageSize;
-            set => _PageSize = value > _MaxPageSize ? _MaxPageSize : value;
+            get => _Search;
+            set => _Search = value?.ToLower();
         }
+    }
 
-        public int PageIndex
-        {
-            get => _PageIndex;
-            set => _PageIndex = value <= 0 ? 1 : value;
-        }
+    public enum TypeSort
+    {
+        Desc = 1,
+        Asc
     }
 }

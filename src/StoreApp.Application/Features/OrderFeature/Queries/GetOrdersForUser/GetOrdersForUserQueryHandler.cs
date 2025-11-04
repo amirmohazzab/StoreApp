@@ -32,7 +32,11 @@ namespace StoreApp.Application.Features.OrderFeature.Queries.GetOrdersForUser
         public async Task<List<OrderDto>> Handle(GetOrdersForUserQuery request, CancellationToken cancellationToken)
         {
             var orders = await unitOfWork.Repository<Order>()
-                .Where(o => o.CreatedBy == currentUserService.UserId).ToListAsync();
+                .Where(o => o.CreatedBy == currentUserService.UserId)
+                .Include(x => x.DeliveryMethod)
+                .Include(x => x.OrderItems)
+                .OrderByDescending(x => x.Created)
+                .ToListAsync(cancellationToken);
 
             return mapper.Map<List<OrderDto>>(orders);
         }

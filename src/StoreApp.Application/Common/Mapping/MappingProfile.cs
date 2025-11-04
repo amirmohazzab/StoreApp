@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using StoreApp.Application.Dtos.Account;
+using StoreApp.Application.Features.UserProfile.Commands;
+using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,11 @@ namespace StoreApp.Application.Common.Mapping
         public MappingProfile()
         {
             ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
+
+            CreateMap<EditUserProfileCommand, Address>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<Address, AddressDto>();
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)

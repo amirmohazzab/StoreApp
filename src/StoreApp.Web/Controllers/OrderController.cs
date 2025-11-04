@@ -15,7 +15,7 @@ namespace StoreApp.Web.Controllers
     public class OrderController : BaseApiController
     {
         [HttpPost("CreateOrder")]
-        public async Task<ActionResult<OrderDto>> CeateOrder([FromBody] CreateOrderCommand request, CancellationToken cancellationToken)
+        public async Task<ActionResult<OrderDto>> CreateOrder([FromBody] CreateOrderCommand request, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(request, cancellationToken));
         }

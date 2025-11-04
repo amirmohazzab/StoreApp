@@ -6,7 +6,6 @@ namespace StoreApp.Web.Extensions
     {
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
-            services.AddEndpointsApiExplorer();
             //swagger
             services.AddSwaggerGen(c =>
             {

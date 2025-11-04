@@ -12,7 +12,7 @@ namespace StoreApp.Application.Features.ProductBrandFeature.Queries.GetAll
     {
         public GetProductBrandSpec() 
         {
-
+            IsPagingEnabled = false;
         }
     }
 }

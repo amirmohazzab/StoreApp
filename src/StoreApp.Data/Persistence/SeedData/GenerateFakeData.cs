@@ -117,8 +117,8 @@ namespace StoreApp.Data.Persistence.SeedData
                    Price = 25000,
                    Title = "product 3",
                    Summary = "Summary Product 3",
-                   ProductBrandId = 3,
-                   ProductTypeId = 3
+                   ProductBrandId = 1,
+                   ProductTypeId = 2
                 },
 
                 new()
@@ -128,8 +128,8 @@ namespace StoreApp.Data.Persistence.SeedData
                    Price = 12000,
                    Title = "product 4",
                    Summary = "Summary Product 4",
-                   ProductBrandId = 4,
-                   ProductTypeId = 4
+                   ProductBrandId = 2,
+                   ProductTypeId = 1
                 },
 
                 new()
@@ -139,8 +139,8 @@ namespace StoreApp.Data.Persistence.SeedData
                    Price = 30000,
                    Title = "product 5",
                    Summary = "Summary Product 5",
-                   ProductBrandId = 5,
-                   ProductTypeId = 5
+                   ProductBrandId = 1,
+                   ProductTypeId = 1
                 }
             };
         }

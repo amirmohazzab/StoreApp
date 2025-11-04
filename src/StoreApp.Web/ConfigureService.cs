@@ -19,13 +19,15 @@ namespace StoreApp.Web
 
             ApiBehaviorOptions(builder);
 
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerDocumentation();
             
             builder.Services.AddCors(option =>
             {
                 option.AddPolicy("CorsPolicy", policy =>
                 {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(configuration["CorsAddress:AddressHttp"]);
+                    policy.WithOrigins(configuration["CorsAddress:AddressHttp"])
+                        .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                 });
             });
 
@@ -40,21 +42,44 @@ namespace StoreApp.Web
         {
             app.UseMiddleware<MiddlewareExceptionHandler>();
 
+            //#region seed data and auto migration
+
+            //create scope
+            //var scope = app.Services.CreateScope();
+            //var services = scope.ServiceProvider;
+            //get service
+            //var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            //var context = services.GetRequiredService<StoreAppDbContext>();
+            //auto migrations
+            //try
+            //{
+            //    await context.Database.MigrateAsync();
+            //    await GenerateFakeData.SeedDataAsync(context, loggerFactory);
+            //}
+            //catch (Exception e)
+            //{
+            //    var logger = loggerFactory.CreateLogger<Program>();
+            //    logger.LogError(e, "error exception for migrations");
+            //}
+
+            //#endregion
+
             #region HTTP request pipeline
 
             app.UseSwaggerDocumentation();
-           
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.UseCors("CorsPolicy");
 
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
+            app.UseRouting();
+
+            app.UseCors("CorsPolicy");
+            
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
 
-            app.Run();
+            await app.RunAsync();
 
             #endregion
 

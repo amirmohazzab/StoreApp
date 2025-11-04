@@ -2,17 +2,19 @@
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace StoreApp.Domain.Entities.Basket
 {
+    [Table("CustomerBasketItems")]
     public class CustomerBasketItem : BaseEntity
     {
         public int ProductId { get; set; }
 
-        public int BasketId { get; set; }
+        public string BasketId { get; set; }
 
         public string ProductName { get; set; }
 

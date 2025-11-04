@@ -33,6 +33,7 @@ namespace StoreApp.Application.Features.Account.Commands.LoginUser
             this.unitOfWork = unitOfWork;
             this.tokenService = tokenService;
         }
+
         public async Task<UserDto> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var user = await unitOfWork.Context.Set<User>()
@@ -40,7 +41,7 @@ namespace StoreApp.Application.Features.Account.Commands.LoginUser
 
             if (user == null) throw new BadRequestEntityException("User Not Found, please sign in at the website");
 
-            var result = await signInManager.CheckPasswordSignInAsync(user, request.Password,false);
+            var result = await signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (!result.Succeeded) throw new BadRequestEntityException("UserName or Password wrong");
 

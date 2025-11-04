@@ -16,6 +16,7 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetAll
         {
             AddInclude(p => p.ProductBrand);
             AddInclude(p => p.ProductType);
+
             if (specParams.TypeSort == TypeSort.Desc)
             {
                 switch (specParams.Sort)
@@ -60,6 +61,7 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetAll
         {
             AddInclude(p => p.ProductBrand);
             AddInclude(p => p.ProductType);
+            IsPagingEnabled = false;
         }
     }
 

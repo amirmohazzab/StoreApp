@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.Basket;
@@ -15,7 +16,9 @@ namespace StoreApp.Data.Persistence.Configuration
         public void Configure(EntityTypeBuilder<CustomerBasket> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.HasMany(b => b.Items).WithOne(i => i.Basket).HasForeignKey(i => i.BasketId);
+            builder.HasMany(b => b.Items).WithOne(i => i.Basket).HasForeignKey(i => i.BasketId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.CreatedBy);
+            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.LastModifiedBy);
         }
     }
 }

@@ -17,13 +17,11 @@ namespace StoreApp.Data.Persistence.Configuration
 
             builder.HasOne(ur => ur.User)
                 .WithMany(u => u.UserRoles)
-                .HasForeignKey(ur => ur.UserId)
-                .IsRequired();
+                .HasForeignKey(ur => ur.UserId);
 
             builder.HasOne(ur => ur.Role)
                 .WithMany(r => r.UserRoles)
-                .HasForeignKey(ur => ur.RoleId)
-                .IsRequired();
+                .HasForeignKey(ur => ur.RoleId);
         }
     }
 }

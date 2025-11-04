@@ -28,8 +28,8 @@
   {
     "ContainingType": "StoreApp.Web.Controllers.AccountController",
     "Method": "GetAddresses",
-    "RelativePath": "api/Account/GetAddress",
-    "HttpMethod": "POST",
+    "RelativePath": "api/Account/GetAddresses",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
@@ -133,7 +133,7 @@
     "Parameters": [
       {
         "Name": "basketId",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -159,7 +159,7 @@
     "Parameters": [
       {
         "Name": "basketId",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -177,19 +177,45 @@
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.BasketController",
+    "Method": "AddToBasket",
+    "RelativePath": "api/Basket/add-item",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basket",
+        "Type": "StoreApp.Domain.Entities.Basket.CustomerBasket",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Domain.Entities.Basket.CustomerBasket",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.BasketController",
     "Method": "DeleteItem",
-    "RelativePath": "api/Basket/{basketId}/{id}",
+    "RelativePath": "api/Basket/DeleteItem/{basketId}/{productId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "basketId",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       },
       {
-        "Name": "id",
+        "Name": "productId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -197,8 +223,28 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "StoreApp.Web.Controllers.BasketController",
+    "Method": "GetAllBaskets",
+    "RelativePath": "api/Basket/getBasketsForUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[StoreApp.Domain.Entities.Basket.CustomerBasket, StoreApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.OrderController",
-    "Method": "CeateOrder",
+    "Method": "CreateOrder",
     "RelativePath": "api/Order/CreateOrder",
     "HttpMethod": "POST",
     "IsController": true,
@@ -349,16 +395,6 @@
         "IsRequired": false
       },
       {
-        "Name": "PageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "PageIndex",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "TypeSort",
         "Type": "System.String",
         "IsRequired": false
@@ -371,6 +407,16 @@
       {
         "Name": "Search",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
@@ -451,5 +497,41 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.UserController",
+    "Method": "GetUserInfo",
+    "RelativePath": "api/User/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Application.Dtos.Account.AddressDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.UserController",
+    "Method": "EditUserInfo",
+    "RelativePath": "api/User/update-profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "StoreApp.Application.Features.UserProfile.Commands.EditUserProfileCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

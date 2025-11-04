@@ -10,11 +10,11 @@ namespace StoreApp.Application.Features.BasketFeature.Commands.DeleteBasket
 {
     public class DeleteBasketCommand : IRequest<bool>
     {
-        public DeleteBasketCommand(int id)
+        public DeleteBasketCommand(string id)
         {
             Id = id;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }

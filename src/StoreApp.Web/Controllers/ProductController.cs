@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreApp.Application.Dtos.ProductDto;
 using StoreApp.Application.Features.ProductBrandFeature.Queries.GetAll;
@@ -19,8 +20,13 @@ namespace StoreApp.Web.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ProductDto>> Get([FromRoute] int id, CancellationToken cancellationToken)
         {
-            var result = await Mediator.Send(new GetProductQuery(id), cancellationToken);
-            return Ok(result);
+            return Ok(await Mediator.Send(new GetProductQuery(id), cancellationToken));
+        }
+
+        [HttpPost("add-like")]
+        public async Task<IActionResult> AddLike([FromQuery] string targetUserName)
+        {
+
         }
     }
 }

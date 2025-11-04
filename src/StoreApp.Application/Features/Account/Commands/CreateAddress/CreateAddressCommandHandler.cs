@@ -24,7 +24,7 @@ namespace StoreApp.Application.Features.Account.Commands.CreateAddress
 
         public string City { get; set; }
 
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
@@ -50,7 +50,7 @@ namespace StoreApp.Application.Features.Account.Commands.CreateAddress
         public CreateAddressCommandHandler(
             IUnitOfWork unitOfWork, 
             IMapper mapper, 
-            ICurrentUserService currentService,
+            ICurrentUserService currentUserService,
             UserManager<User> userManager)
         {
             this.unitOfWork = unitOfWork;
@@ -66,6 +66,7 @@ namespace StoreApp.Application.Features.Account.Commands.CreateAddress
                 .FirstOrDefaultAsync(u => u.Id == userId, cancellationToken);
 
             if (user == null) throw new NotFoundEntityException();
+
             if (request.IsMAIN && user.Addresses.Any())
             {
                 foreach (var address in user.Addresses)
@@ -73,12 +74,14 @@ namespace StoreApp.Application.Features.Account.Commands.CreateAddress
                     address.IsMAIN = false;
                 }
             }
+
             if (!user.Addresses.Any()) request.IsMAIN = true;
 
             var entity = mapper.Map<Address>(request);
             entity.UserId = userId;
             user.Addresses.Add(entity);
             var userResult = await userManager.UpdateAsync(user);
+
             if (!userResult.Succeeded)
                 throw new BadRequestEntityException();
 

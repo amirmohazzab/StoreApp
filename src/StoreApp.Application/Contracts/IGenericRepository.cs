@@ -34,5 +34,11 @@ namespace StoreApp.Application.Contracts
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
 
         Task<List<T>> ToListAsync(CancellationToken cancellationToken);
+
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
+
+        void Update(T entity);
+
+        Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
     }
 }

@@ -11,14 +11,14 @@ namespace StoreApp.Application.Features.BasketFeature.Commands.DeleteItem
 {
     public class DeleteItemCommand : IRequest<CustomerBasket>
     {
-        public int BasketId { get; set; }
+        public string BasketId { get; set; }
 
-        public int ItemId { get; set; }
+        public int ProductId { get; set; }
 
-        public DeleteItemCommand(int basketId, int itemId)
+        public DeleteItemCommand(string basketId, int productId)
         {
             BasketId = basketId;
-            ItemId = itemId;
+            ProductId = productId;
         }
     }
 }

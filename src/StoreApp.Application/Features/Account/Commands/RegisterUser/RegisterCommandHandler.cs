@@ -7,6 +7,7 @@ using StoreApp.Application.Dtos.Account;
 using StoreApp.Application.Interfaces;
 using StoreApp.Domain.Entities.User;
 using StoreApp.Domain.Enums;
+using StoreApp.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,10 +51,10 @@ namespace StoreApp.Application.Features.Account.Commands.RegisterUser
 
             var user = mapper.Map<User>(request);
             var result = await userManager.CreateAsync(user, request.Password);
-            if (!result.Succeeded) throw new BadImageFormatException(result.Errors.FirstOrDefault().Description);
+            if (!result.Succeeded) throw new BadRequestEntityException(result.Errors.FirstOrDefault().Description);
 
             var roleResult = await userManager.AddToRoleAsync(user, RoleType.User.ToString());
-            if (!roleResult.Succeeded) throw new BadImageFormatException(roleResult.Errors.FirstOrDefault().Description);
+            if (!roleResult.Succeeded) throw new BadRequestEntityException(roleResult.Errors.FirstOrDefault().Description);
 
             var mapUser = mapper.Map<UserDto>(user);
             mapUser.Token = await tokenService.CreateToken(user);

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using StoreApp.Application.Contracts;
+using StoreApp.Application.Features.OrderFeature.Commands.Create;
 using StoreApp.Domain.Entities.Order;
 using StoreApp.Domain.Enums;
 using StoreApp.Domain.Exceptions;
@@ -10,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZarinpalSandbox;
+//using ZarinpalSandbox;
 
 namespace StoreApp.Application.Features.OrderFeature.Commands.Verify
 {
@@ -46,14 +47,13 @@ namespace StoreApp.Application.Features.OrderFeature.Commands.Verify
             if (order == null) throw new BadRequestEntityException("Order Not Found, Please try again");
 
             var portal = await unitOfWork.Repository<Portal>()
-                .Where(o => o.Id == order.Id).SingleOrDefaultAsync(cancellationToken);
-            if (portal == null) throw new BadRequestEntityException("Payment Error, Please Call Support team");
+                .Where(o => o.OrderId == order.Id).SingleOrDefaultAsync(cancellationToken);
+            if (portal == null) throw new BadRequestEntityException("Payment Error, Please Call Support Team");
 
             if (request.Status != "Ok")
             {
                 order.OrderStatus = OrderStatus.Cancelled;
                 await unitOfWork.Repository<Order>().UpdateAsync(order);
-
                 portal.Status = PaymentDataStatus.Cancelled;
                 await unitOfWork.Repository<Portal>().UpdateAsync(portal);
                 await unitOfWork.Save(cancellationToken);
@@ -73,9 +73,7 @@ namespace StoreApp.Application.Features.OrderFeature.Commands.Verify
                 portal.Status = PaymentDataStatus.Success;
                 await unitOfWork.Repository<Portal>().UpdateAsync(portal);
                 await unitOfWork.Save(cancellationToken);
-
                 return configuration["Order:CallBackSuccess"];
-
             } 
             
             order.OrderStatus = OrderStatus.PaymentFailed;
@@ -83,8 +81,7 @@ namespace StoreApp.Application.Features.OrderFeature.Commands.Verify
             portal.Status = PaymentDataStatus.Failed;
             await unitOfWork.Repository<Portal>().UpdateAsync(portal);
             await unitOfWork.Save(cancellationToken);
-
-           return configuration["Order:CallBackFailed"];
+            return configuration["Order:CallBackFailed"];
         }
     }
 }

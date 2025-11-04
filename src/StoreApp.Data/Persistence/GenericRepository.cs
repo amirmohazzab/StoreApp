@@ -92,5 +92,20 @@ namespace StoreApp.Data.Persistence
         {
             return await dbSet.ToListAsync(cancellationToken);
         }
+
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
+        {
+            return await dbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate, cancellationToken);
+        }
+
+        public void Update(T entity)
+        {
+            dbContext.Set<T>().Update(entity);
+        }
+
+        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
+        {
+            return await dbContext.Set<T>().FirstOrDefaultAsync(predicate, cancellationToken);
+        }
     }
-}    
+}

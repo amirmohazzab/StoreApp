@@ -27,14 +27,14 @@ namespace StoreApp.Web.Controllers
         [HttpPost("CreateAddress")]
         public async Task<ActionResult<AddressDto>> CreateAddresses([FromBody] CreateAddressCommand request, CancellationToken cancellationToken)
         {
-            return Ok(Mediator.Send(request, cancellationToken));
+            return Ok(await Mediator.Send(request, cancellationToken));
         }
 
         [Authorize]
-        [HttpPost("GetAddress")]
+        [HttpGet("GetAddresses")]
         public async Task<ActionResult<IEnumerable<AddressDto>>> GetAddresses(CancellationToken cancellationToken)
         {
-            return Ok(Mediator.Send(new GetAddressesQuery(), cancellationToken));
+            return Ok(await Mediator.Send(new GetAddressesQuery(), cancellationToken));
         }
     }
 }

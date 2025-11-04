@@ -9,12 +9,13 @@ namespace StoreApp.Domain.Entities.User
 {
     public class User : IdentityUser
     {
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
 
-        public string NationalCode { get; set; }
+        public string? NationalCode { get; set; }
 
         public ICollection<Address> Addresses { get; set; }
 
         public ICollection<UserRole>? UserRoles { get; set; }
+
     }
 }

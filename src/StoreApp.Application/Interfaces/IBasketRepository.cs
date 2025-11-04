@@ -9,10 +9,14 @@ namespace StoreApp.Application.Interfaces
 {
     public interface IBasketRepository
     {
-        Task<CustomerBasket> GetBasketAsync(int basketId);
+        Task<CustomerBasket> GetBasketAsync(string basketId);
 
         Task<CustomerBasket> UpdateBasketAsync(CustomerBasket customerBasket);
 
-        Task<bool> DeleteBasketAsync(int basketId);
+        Task<bool> DeleteBasketAsync(string basketId);
+
+        Task<List<CustomerBasket>> GetAllBasketAsync(CancellationToken cancellation);
+
+        Task<CustomerBasket> AddItemToBasketAsync(CustomerBasket basket, CancellationToken cancellationToken);
     }
 }

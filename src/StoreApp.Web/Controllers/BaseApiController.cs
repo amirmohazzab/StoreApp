@@ -8,8 +8,8 @@ namespace StoreApp.Web.Controllers
     [ApiController]
     public class BaseApiController : ControllerBase
     {
-        private ISender mediatr = null;
+        private ISender mediatr = null; 
 
-        protected ISender Mediator => mediatr ?? HttpContext.RequestServices.GetRequiredService<ISender>();
+        protected ISender Mediator => mediatr ??= HttpContext.RequestServices.GetRequiredService<ISender>();
     }
 }

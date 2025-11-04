@@ -59,7 +59,7 @@ namespace StoreApp.Application.Common.BehaviorPipes
             else
             {
                 response = await next(); // go to get response
-                var serialized = Encoding.Default.GetBytes(JsonConvert.SerializeObject(response));
+                var serialized = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response));
                 await CreateNewCache(request, key, cancellationToken, serialized);
             }
 

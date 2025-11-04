@@ -15,12 +15,13 @@ namespace StoreApp.Data.Persistence.Configuration
         {
             builder.Property(x => x.State);
             builder.Property(x => x.City);
-            builder.Property(x => x.FullName);
+            builder.Property(x => x.FirstName);
+            builder.Property(x => x.LastName);
             builder.Property(x => x.PostalCode).HasMaxLength(10);
             builder.Property(x => x.Number).HasMaxLength(11).IsRequired();
 
             builder.HasOne(x => x.User).WithMany(u => u.Addresses)
-                .HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(x => x.UserId);
         }
     }
 }

@@ -11,11 +11,11 @@ namespace StoreApp.Application.Features.BasketFeature.Queries.GetBasketById
 {
     public class GetBasketByIdQuery : IRequest<CustomerBasket>
     {
-        public GetBasketByIdQuery(int id)
+        public GetBasketByIdQuery(string id)
         {
             Id = id;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }
