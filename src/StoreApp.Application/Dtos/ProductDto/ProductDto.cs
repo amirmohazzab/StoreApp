@@ -37,5 +37,13 @@ namespace StoreApp.Application.Dtos.ProductDto
                 .ForMember(p => p.ProductType, c => c.MapFrom(v => v.ProductType.Title))
                 .ForMember(p => p.ProductBrand, c => c.MapFrom(v => v.ProductBrand.Title));
         }
+
+        public bool Liked { get; set; }
+
+        public int LikeCount { get; set; }
+
+        public int ViewCount { get; set; }
+
+
     }
 }

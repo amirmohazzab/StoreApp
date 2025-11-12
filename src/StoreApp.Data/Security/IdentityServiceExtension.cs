@@ -83,26 +83,39 @@ namespace StoreApp.Data.Security
             {
                 OnAuthenticationFailed = c =>
                 {
-                    c.NoResult();
-                    c.Response.StatusCode = 500;
-                    c.Response.ContentType = "application/json";
-                    return c.Response.WriteAsync("Server Error. please try again");
+                    if (!c.Response.HasStarted) 
+                    {
+                        c.NoResult();
+                        c.Response.StatusCode = 500;
+                        c.Response.ContentType = "application/json";
+                        return c.Response.WriteAsync("Server Error. please try again");
+                    }
+                    return Task.CompletedTask;
                 },
                 OnChallenge = context =>
                 {
                     context.HandleResponse();
-                    context.Response.StatusCode = 401;
-                    context.Response.ContentType = "application/json";
-                    var result = JsonConvert.SerializeObject(new ApiToReturn(401, "you are not authenticated"));
-                    return context.Response.WriteAsync(result);
+
+                    if (!context.Response.HasStarted) 
+                    {
+                        context.Response.StatusCode = 401;
+                        context.Response.ContentType = "application/json";
+                        var result = JsonConvert.SerializeObject(new ApiToReturn(401, "you are not authenticated"));
+                        return context.Response.WriteAsync(result);
+                    }
+                    return Task.CompletedTask;
                 },
                 OnForbidden = context =>
                 {
-                    context.Response.StatusCode = 403;
-                    context.Response.ContentType = "application/json";
-                    var result = JsonConvert.SerializeObject(new ApiToReturn(403,
-                        "you don't have access, please enter the website"));
-                    return context.Response.WriteAsync(result);
+                    if (!context.Response.HasStarted)
+                    {
+                        context.Response.StatusCode = 403;
+                        context.Response.ContentType = "application/json";
+                        var result = JsonConvert.SerializeObject(new ApiToReturn(403,
+                            "you don't have access, please enter the website"));
+                        return context.Response.WriteAsync(result);
+                    }
+                    return Task.CompletedTask;
                 }
             };
         }

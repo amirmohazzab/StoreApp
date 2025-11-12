@@ -107,5 +107,20 @@ namespace StoreApp.Data.Persistence
         {
             return await dbContext.Set<T>().FirstOrDefaultAsync(predicate, cancellationToken);
         }
+
+        public IQueryable<T> Include<TProperty>(Expression<Func<T, TProperty>> navigationPropertyPath)
+        {
+            return dbSet.Include(navigationPropertyPath);
+        }
+
+        public IQueryable<TResult> Select<TResult>(Expression<Func<T, TResult>> selector)
+        {
+            return dbSet.Select(selector);
+        }
+
+        public IQueryable<T> GetQueryable()
+        {
+            return dbSet.AsQueryable();
+        }
     }
 }

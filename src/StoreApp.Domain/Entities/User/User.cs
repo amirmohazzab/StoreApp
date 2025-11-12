@@ -17,5 +17,6 @@ namespace StoreApp.Domain.Entities.User
 
         public ICollection<UserRole>? UserRoles { get; set; }
 
+        public ICollection<UserLike> UserLikes { get; set; } = new List<UserLike>();
     }
 }

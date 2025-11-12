@@ -363,7 +363,7 @@ namespace StoreApp.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -381,6 +381,9 @@ namespace StoreApp.Data.Migrations
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("LikeCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("PictureUrl")
                         .IsRequired()
@@ -406,7 +409,12 @@ namespace StoreApp.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatedBy");
 
                     b.HasIndex("LastModifiedBy");
 
@@ -609,7 +617,6 @@ namespace StoreApp.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DisplayName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -667,6 +674,38 @@ namespace StoreApp.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.UserLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Liked")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserLikes");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.User.UserRole", b =>
@@ -857,9 +896,15 @@ namespace StoreApp.Data.Migrations
 
             modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
                 {
-                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "CreatedByUser")
                         .WithMany()
-                        .HasForeignKey("LastModifiedBy");
+                        .HasForeignKey("CreatedBy")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "LastModifiedByUser")
+                        .WithMany()
+                        .HasForeignKey("LastModifiedBy")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("StoreApp.Domain.Entities.ProductBrand", "ProductBrand")
                         .WithMany()
@@ -873,11 +918,13 @@ namespace StoreApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CreatedByUser");
+
+                    b.Navigation("LastModifiedByUser");
+
                     b.Navigation("ProductBrand");
 
                     b.Navigation("ProductType");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.ProductBrand", b =>
@@ -905,6 +952,24 @@ namespace StoreApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.UserLike", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Product", "Product")
+                        .WithMany("UserLikes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany("UserLikes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });
@@ -941,6 +1006,11 @@ namespace StoreApp.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("UserLikes");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.User.Role", b =>
                 {
                     b.Navigation("UserRoles");
@@ -949,6 +1019,8 @@ namespace StoreApp.Data.Migrations
             modelBuilder.Entity("StoreApp.Domain.Entities.User.User", b =>
                 {
                     b.Navigation("Addresses");
+
+                    b.Navigation("UserLikes");
 
                     b.Navigation("UserRoles");
                 });

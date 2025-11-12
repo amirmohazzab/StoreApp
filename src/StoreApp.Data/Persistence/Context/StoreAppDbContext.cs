@@ -43,6 +43,8 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 
+        public DbSet<UserLike> UserLikes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

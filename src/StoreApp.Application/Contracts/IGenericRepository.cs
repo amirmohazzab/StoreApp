@@ -40,5 +40,11 @@ namespace StoreApp.Application.Contracts
         void Update(T entity);
 
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+
+        IQueryable<T> Include<TProperty>(Expression<Func<T, TProperty>> navigationPropertyPath);
+
+        IQueryable<TResult> Select<TResult>(Expression<Func<T, TResult>> selector);
+
+        IQueryable<T> GetQueryable();
     }
 }

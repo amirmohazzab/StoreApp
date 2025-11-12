@@ -3,12 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\getallfeatures\\getallfeaturesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\getallfeatures\\getallfeaturesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\getall\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\getall\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\getallmostliked\\getmostlikedproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\getallmostliked\\getmostlikedproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\get\\getproductquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\get\\getproductquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\getall\\getproductspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\getall\\getproductspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\getall\\getallproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\getall\\getallproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\productfeature\\queries\\getallmostviewed\\getmostviewedproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\productfeature\\queries\\getallmostviewed\\getmostviewedproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\configureservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\configureservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +58,132 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "GetProductQuery.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\Get\\GetProductQuery.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\Get\\GetProductQuery.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\Get\\GetProductQuery.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\Get\\GetProductQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:33:38.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetProductSpec.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetProductSpec.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetProductSpec.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetProductSpec.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetProductSpec.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:33:30.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetAllProductsQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQueryHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQueryHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQueryHandler.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:33:19.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetAllProductsQuery.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQuery.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQuery.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQuery.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAll\\GetAllProductsQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:33:07.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetMostViewedProductsQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostViewed\\GetMostViewedProductsQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostViewed\\GetMostViewedProductsQueryHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostViewed\\GetMostViewedProductsQueryHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostViewed\\GetMostViewedProductsQueryHandler.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACcAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:03:44.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetMostLikedProductsQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostLiked\\GetMostLikedProductsQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostLiked\\GetMostLikedProductsQueryHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostLiked\\GetMostLikedProductsQueryHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllMostLiked\\GetMostLikedProductsQueryHandler.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:03:38.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\ProductController.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\ProductController.cs",
               "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABoAAABTAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T14:41:58.295Z",
+              "WhenOpened": "2025-11-10T19:03:01.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ConfigureService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\ConfigureService.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\ConfigureService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\ConfigureService.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\ConfigureService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T19:01:45.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetAllFeaturesQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllFeatures\\GetAllFeaturesQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllFeatures\\GetAllFeaturesQueryHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllFeatures\\GetAllFeaturesQueryHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\ProductFeature\\Queries\\GetAllFeatures\\GetAllFeaturesQueryHandler.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAwwCgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T18:14:00.767Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\UserController.cs",
-              "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T16:59:02.706Z",
+              "WhenOpened": "2025-11-10T14:22:06.502Z",
               "EditorCaption": ""
             }
           ]

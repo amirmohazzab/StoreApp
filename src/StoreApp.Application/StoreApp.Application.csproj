@@ -28,7 +28,6 @@
     <Folder Include="Dtos\ProductBrandDto\" />
     <Folder Include="Dtos\ProductTypeDto\" />
     <Folder Include="Features\ProductBrandFeature\Commands\" />
-    <Folder Include="Features\ProductFeature\Commands\" />
     <Folder Include="Features\ProductFeature\Validators\" />
     <Folder Include="Features\ProductTypeFeature\Commands\" />
   </ItemGroup>

@@ -22,8 +22,14 @@ namespace StoreApp.Data.Persistence.Configuration
             builder.Property(p => p.Description).HasMaxLength(500);
             builder.Property(p => p.Title).HasMaxLength(100);
             builder.Property(p => p.Summary).HasMaxLength(100);
-            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.CreatedBy);
-            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.LastModifiedBy);
+
+            builder.HasOne(p => p.CreatedByUser).WithMany().HasForeignKey(p => p.CreatedBy)
+                .IsRequired(false)
+               .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(p => p.LastModifiedByUser).WithMany().HasForeignKey(p => p.LastModifiedBy)
+                 .IsRequired(false)
+                 .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

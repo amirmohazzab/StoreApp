@@ -243,6 +243,74 @@
     ]
   },
   {
+    "ContainingType": "StoreApp.Web.Controllers.HomeController",
+    "Method": "GetAllProducts",
+    "RelativePath": "api/Home/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[StoreApp.Application.Dtos.ProductDto.ProductDto, StoreApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.HomeController",
+    "Method": "IncrementViewCount",
+    "RelativePath": "api/Home/increament-view/{productId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.HomeController",
+    "Method": "GetMostLikedProducts",
+    "RelativePath": "api/Home/most-liked",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.HomeController",
+    "Method": "GetMostViewedProducts",
+    "RelativePath": "api/Home/most-viewed",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.OrderController",
     "Method": "CreateOrder",
     "RelativePath": "api/Order/CreateOrder",
@@ -529,6 +597,32 @@
       {
         "Name": "command",
         "Type": "StoreApp.Application.Features.UserProfile.Commands.EditUserProfileCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.UserLikeController",
+    "Method": "GetLikedProducts",
+    "RelativePath": "api/UserLike/liked-products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.UserLikeController",
+    "Method": "ToggleLike",
+    "RelativePath": "api/UserLike/toggle/{productId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

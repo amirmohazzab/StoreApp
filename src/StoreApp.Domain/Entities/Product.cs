@@ -32,7 +32,18 @@ namespace StoreApp.Domain.Entities
 
         public ProductType ProductType { get; set; }
 
-        public User.User User { get; set; }
+        public string? CreatedBy { get; set; }
 
+        public string? LastModifiedBy { get; set; }
+
+        public User.User? CreatedByUser { get; set; }
+
+        public User.User? LastModifiedByUser { get; set; }
+
+        public ICollection<UserLike>? UserLikes { get; set; } = new List<UserLike>();
+
+        public int ViewCount { get; set; } = 0;
+
+        public int LikeCount { get; set; } = 0;
     }
 }
