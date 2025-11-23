@@ -203,6 +203,22 @@
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.BasketController",
+    "Method": "ClearBasket",
+    "RelativePath": "api/Basket/clear/{basketId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basketId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.BasketController",
     "Method": "DeleteItem",
     "RelativePath": "api/Basket/DeleteItem/{basketId}/{productId}",
     "HttpMethod": "DELETE",
@@ -243,6 +259,37 @@
     ]
   },
   {
+    "ContainingType": "StoreApp.Web.Controllers.BasketController",
+    "Method": "RemoveItem",
+    "RelativePath": "api/Basket/removeItem",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basketId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "StoreApp.Domain.Entities.Basket.CustomerBasket",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.HomeController",
     "Method": "GetAllProducts",
     "RelativePath": "api/Home/all",
@@ -261,22 +308,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "StoreApp.Web.Controllers.HomeController",
-    "Method": "IncrementViewCount",
-    "RelativePath": "api/Home/increament-view/{productId}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.HomeController",
@@ -525,6 +556,128 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "IncrementViewCount",
+    "RelativePath": "api/Product/{productId}/increament-view",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "GetRelatedProducts",
+    "RelativePath": "api/Product/{productId}/related",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "AddReview",
+    "RelativePath": "api/Product/{productId}/review",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "StoreApp.Application.Features.ProductFeature.Commands.AddProductReview.AddReviewCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "GetReviews",
+    "RelativePath": "api/Product/{productId}/reviews",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "GetByCategory",
+    "RelativePath": "api/Product/by-category/{categoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "GetLikeStatus",
+    "RelativePath": "api/Product/like-status/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "ToggleLike",
+    "RelativePath": "api/Product/toggle-like/{productId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.ProductBrandController",

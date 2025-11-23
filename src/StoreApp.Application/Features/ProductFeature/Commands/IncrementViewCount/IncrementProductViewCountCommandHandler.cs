@@ -22,6 +22,7 @@ namespace StoreApp.Application.Features.ProductFeature.Commands.IncrementViewCou
         {
             this.unitOfWork = unitOfWork;
         }
+
         public async Task<bool> Handle(IncrementProductViewCountCommand request, CancellationToken cancellationToken)
         {
             var product = await unitOfWork.Repository<Product>().GetByIdAsync(request.ProductId, cancellationToken);

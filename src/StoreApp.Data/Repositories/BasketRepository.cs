@@ -111,7 +111,8 @@ namespace StoreApp.Data.Repositories
             }
 
             await dbContext.SaveChangesAsync();
-            return basket;
+            //return basket;
+            return await GetBasketAsync(basket.Id);
         }
 
         public async Task<List<CustomerBasket>> GetAllBasketAsync(CancellationToken cancellation)

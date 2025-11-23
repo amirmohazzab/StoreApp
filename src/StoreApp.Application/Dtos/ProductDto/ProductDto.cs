@@ -34,8 +34,13 @@ namespace StoreApp.Application.Dtos.ProductDto
         {
             profile.CreateMap<Product, ProductDto>()
                 .ForMember(p => p.PictureUrl, c => c.MapFrom<ProductImageUrlResolver>())
+                .ForMember(d => d.Thumbnails, o => o.MapFrom<ProductGalleryUrlResolver>())
                 .ForMember(p => p.ProductType, c => c.MapFrom(v => v.ProductType.Title))
-                .ForMember(p => p.ProductBrand, c => c.MapFrom(v => v.ProductBrand.Title));
+                .ForMember(p => p.ProductBrand, c => c.MapFrom(v => v.ProductBrand.Title))
+                .ForMember(d => d.Thumbnails, o => o.MapFrom(s => s.ProductImages.Select(i => i.ImageUrl)))
+                .ForMember(d => d.Colors, o => o.MapFrom(s => s.Colors.Select(c => c.ColorCode)))
+                .ForMember(d => d.Sizes, o => o.MapFrom(s => s.Sizes.Select(sz => sz.Size)))
+                .ForMember(d => d.Liked, o => o.Ignore());
         }
 
         public bool Liked { get; set; }
@@ -44,6 +49,20 @@ namespace StoreApp.Application.Dtos.ProductDto
 
         public int ViewCount { get; set; }
 
+        public double? AverageRating { get; set; }
 
+        public int? ReviewCount { get; set; }
+
+        public string? Description { get; set; }
+
+        public string? Summary { get; set; }
+
+        public decimal? OldPrice { get; set; }
+
+        public List<string> Thumbnails { get; set; } = new();
+
+        public List<string> Colors { get; set; } = new();
+
+        public List<string> Sizes { get; set; } = new();
     }
 }

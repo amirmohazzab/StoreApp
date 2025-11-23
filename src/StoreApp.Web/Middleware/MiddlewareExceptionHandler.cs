@@ -11,8 +11,8 @@ namespace StoreApp.Web.Middleware
         private readonly RequestDelegate next;
 
         public MiddlewareExceptionHandler(
-            IWebHostEnvironment env, 
-            ILogger<MiddlewareExceptionHandler> logger, 
+            IWebHostEnvironment env,
+            ILogger<MiddlewareExceptionHandler> logger,
             RequestDelegate next)
         {
             this.env = env;
@@ -28,9 +28,14 @@ namespace StoreApp.Web.Middleware
             }
             catch (Exception exception)
             {
-                
+                if (context.Response.HasStarted)
+                {
+                    logger.LogError("Response has already started BEFORE middleware wrote!");
+                    return; // فقط خروج — هیچ تغییری روی header یا body نمی‌توان زد
+                }
+
                 var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-                
+
                 var result = HandleServerError(context, exception, options);
 
                 result = HandleResult(context, exception, result, options);
@@ -60,7 +65,7 @@ namespace StoreApp.Web.Middleware
 
                 case BadRequestEntityException badRequestEntityException:
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    result = JsonSerializer.Serialize(new ApiToReturn(400, 
+                    result = JsonSerializer.Serialize(new ApiToReturn(400,
                         badRequestEntityException.Message, badRequestEntityException.Messages,
                         exception.Message), options);
                     break;

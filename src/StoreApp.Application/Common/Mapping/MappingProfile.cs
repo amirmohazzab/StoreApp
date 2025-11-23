@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using StoreApp.Application.Dtos.Account;
+using StoreApp.Application.Dtos.ProductDto;
 using StoreApp.Application.Features.UserProfile.Commands;
+using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;

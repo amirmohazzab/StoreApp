@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using StoreApp.Application.Contracts;
 using StoreApp.Application.Dtos.ProductDto;
 using StoreApp.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,16 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetAllMostLiked
 
         public async Task<List<ProductDto>> Handle(GetMostLikedProductsQuery request, CancellationToken cancellationToken)
         {
+            //var query = unitOfWork.Repository<Product>()
+            //.GetQueryable()
+            //.Where(p => p.IsActive)
+            //.OrderByDescending(p => p.ViewCount);
+
+            //return await query
+            //    .ProjectTo<ProductDto>(mapper.ConfigurationProvider)
+            //    .Take(request.Count)
+            //    .ToListAsync(cancellationToken);
+
             var products = await unitOfWork.Repository<Product>()
             .GetQueryable()
             .Include(p => p.UserLikes)

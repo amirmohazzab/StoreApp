@@ -22,30 +22,24 @@ namespace StoreApp.Web.Controllers
             //    Search = search
             //};
             // query instead of new GetAllFeaturesQuery()
+
+            // [FromQuery] string? sort
+            //new GetAllProductsQuery { SortBy = sort }
             return Ok(await Mediator.Send(new GetAllFeaturesQuery(), cancellationToken));
         }
 
         [HttpGet("most-liked")]
-        public async Task<IActionResult> GetMostLikedProducts([FromQuery] int count = 10, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetMostLikedProducts([FromQuery] int count = 6, CancellationToken cancellationToken = default)
         {
             var result = await Mediator.Send(new GetMostLikedProductsQuery { Count = count }, cancellationToken);
             return Ok(result);
         }
 
         [HttpGet("most-viewed")]
-        public async Task<IActionResult> GetMostViewedProducts([FromQuery] int count = 10, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetMostViewedProducts([FromQuery] int count = 6, CancellationToken cancellationToken = default)
         {
             var result = await Mediator.Send(new GetMostViewedProductsQuery { Count = count }, cancellationToken);
             return Ok(result);
-        }
-
-        [HttpPost("increament-view/{productId}")]
-        public async Task<IActionResult> IncrementViewCount(int productId, CancellationToken cancellationToken)
-        {
-            var result = await Mediator.Send(new IncrementProductViewCountCommand { ProductId = productId }, cancellationToken);
-            if (!result) return NotFound();
-
-            return Ok(new { success = true });
         }
     }
 }

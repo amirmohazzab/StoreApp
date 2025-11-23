@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreApp.Application.Features.BasketFeature.Commands.AddToBasket;
+using StoreApp.Application.Features.BasketFeature.Commands.ClearBasket;
 using StoreApp.Application.Features.BasketFeature.Commands.DeleteBasket;
+using StoreApp.Application.Features.BasketFeature.Commands.DeleteBasketItem;
 using StoreApp.Application.Features.BasketFeature.Commands.DeleteItem;
 using StoreApp.Application.Features.BasketFeature.Commands.UpdateBasket;
 using StoreApp.Application.Features.BasketFeature.Queries.GetBasketById;
@@ -56,6 +60,22 @@ namespace StoreApp.Web.Controllers
         public async Task<ActionResult<CustomerBasket>> AddToBasket([FromBody] CustomerBasket basket, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(new AddToBasketCommand(basket), cancellationToken));
+        }
+
+        [HttpDelete("removeItem")]
+        public async Task<ActionResult<CustomerBasket>> RemoveItem(string basketId, int productId)
+        {
+            var result = await Mediator.Send(new RemoveBasketItemCommand(basketId, productId));
+            return Ok(result);
+        }
+
+        [HttpDelete("clear/{basketId}")]
+        public async Task<IActionResult> ClearBasket(string basketId)
+        {
+            var result = await Mediator.Send(new ClearBasketCommand(basketId));
+            if (!result) return NotFound();
+
+            return Ok(new { message = "Basket cleared successfully" });
         }
     }
 }

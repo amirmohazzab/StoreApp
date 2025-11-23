@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.Basket;
 using StoreApp.Domain.Entities.Order;
@@ -45,6 +46,8 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<UserLike> UserLikes { get; set; }
 
+        public DbSet<ProductReview> Reviews { get; set; } 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -58,6 +61,7 @@ namespace StoreApp.Data.Persistence.Context
             modelBuilder.Entity<DeliveryMethod>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<OrderItem>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<Portal>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ProductReview>().HasQueryFilter(p => p.IsDelete == false);
         }
     }
 }

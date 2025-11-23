@@ -13,8 +13,8 @@ namespace StoreApp.Web.Controllers
         [HttpPost("toggle/{productId}")]
         public async Task<IActionResult> ToggleLike(int productId, CancellationToken cancellationToken)
         {
-            var liked = await Mediator.Send(new ToggleUserLikeCommand(productId), cancellationToken);
-            return Ok(new { liked });
+            var result = await Mediator.Send(new ToggleUserLikeCommand(productId), cancellationToken);
+            return Ok(new { liked = result});
         }
 
         [HttpGet("liked-products")]
@@ -23,10 +23,12 @@ namespace StoreApp.Web.Controllers
             return Ok(await Mediator.Send(new GetUserLikedProductsQuery(), cancellationToken));
         }
 
+        
+
         //    var baseUrl = $"{Request.Scheme}://{Request.Host}/";
         //return Ok(await Mediator.Send(new GetUserLikedProductsQuery { BaseUrl = baseUrl
         //}, cancellationToken));
 
-       
+
     }
 }

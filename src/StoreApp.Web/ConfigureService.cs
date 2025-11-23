@@ -21,14 +21,13 @@ namespace StoreApp.Web
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerDocumentation();
-            
-            builder.Services.AddCors(option =>
+
+            builder.Services.AddCors(options =>
             {
-                option.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.WithOrigins(configuration["CorsAddress:AddressHttp"])
-                        .AllowAnyHeader().AllowAnyMethod().AllowCredentials();
-                });
+                options.AddPolicy("AllowAll", policy =>
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
             });
 
             builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
@@ -38,10 +37,8 @@ namespace StoreApp.Web
             return builder.Services;
         }
 
-        public static async Task<IApplicationBuilder> AddWebAppService(this WebApplication app)
+        public static IApplicationBuilder AddWebAppService(this WebApplication app)
         {
-            app.UseMiddleware<MiddlewareExceptionHandler>();
-
             //#region seed data and auto migration
 
             //create scope
@@ -68,18 +65,20 @@ namespace StoreApp.Web
 
             app.UseSwaggerDocumentation();
 
-            app.UseStaticFiles();
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseCors("CorsPolicy");
-            
+            app.UseCors("AllowAll");
+
+            app.UseMiddleware<MiddlewareExceptionHandler>();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
 
-            await app.RunAsync();
+            //await app.RunAsync();
 
             #endregion
 

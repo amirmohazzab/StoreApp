@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Application.Contracts;
 using StoreApp.Application.Features.ProductFeature.Commands.UpdateLikeCount;
+using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Application.Features.UserLikes.Commands
 {
-    public class ToggleUserLikeCommand : IRequest<bool>
+    public class ToggleUserLikeCommand : IRequest<ToggleLikeResult>
     {
         public ToggleUserLikeCommand(int productId)
         {
@@ -22,7 +23,7 @@ namespace StoreApp.Application.Features.UserLikes.Commands
         public int ProductId { get; set; }
     }
 
-    public class ToggleUserLikeCommandHandler : IRequestHandler<ToggleUserLikeCommand, bool>
+    public class ToggleUserLikeCommandHandler : IRequestHandler<ToggleUserLikeCommand, ToggleLikeResult>
     {
         private readonly ICurrentUserService currentUserService;
 
@@ -37,50 +38,63 @@ namespace StoreApp.Application.Features.UserLikes.Commands
             this.Mediator = Mediator;
         }
 
-        public async Task<bool> Handle(ToggleUserLikeCommand request, CancellationToken cancellationToken)
+        public async Task<ToggleLikeResult> Handle(ToggleUserLikeCommand request, CancellationToken cancellationToken)
         {
             var userId = currentUserService.UserId;
-
             if (string.IsNullOrEmpty(userId))
                 throw new UnauthorizedAccessException("User not authenticated");
+
+            var product = await unitOfWork.Repository<Product>()
+                .GetByIdAsync(request.ProductId, cancellationToken);
+
+            if (product == null)
+                throw new Exception("Product not found");
 
             var existingLike = await unitOfWork.Repository<UserLike>()
                 .GetQueryable()
                 .FirstOrDefaultAsync(u => u.UserId == userId && u.ProductId == request.ProductId, cancellationToken);
 
+            bool isLiked;
+
             if (existingLike == null)
             {
-                var newlike = new UserLike
+                var newLike = new UserLike
                 {
                     UserId = userId,
                     ProductId = request.ProductId,
                     Liked = true
                 };
-                await unitOfWork.Repository<UserLike>().AddAsync(newlike, cancellationToken);
-                await unitOfWork.Save(cancellationToken);
 
-                await Mediator.Send(new UpdateProductLikeCountCommand
-                {
-                    ProductId = request.ProductId,
-                    IsLiked = true
-                }, cancellationToken);
+                await unitOfWork.Repository<UserLike>().AddAsync(newLike, cancellationToken);
 
-                return true;
+                product.LikeCount++;
+                isLiked = true;
             }
             else
             {
                 existingLike.Liked = !existingLike.Liked;
+                isLiked = existingLike.Liked; // ← حتما مقداردهی کن
+
+                if (isLiked)
+                    product.LikeCount++;
+                else
+                    product.LikeCount--;
+
+                if (product.LikeCount < 0)
+                    product.LikeCount = 0;
+
                 unitOfWork.Repository<UserLike>().Update(existingLike);
-                await unitOfWork.Save(cancellationToken);
-
-                await Mediator.Send(new UpdateProductLikeCountCommand
-                {
-                    ProductId = request.ProductId,
-                    IsLiked = existingLike.Liked
-                }, cancellationToken);
-
-                return existingLike.Liked;
             }
+
+            unitOfWork.Repository<Product>().Update(product);
+
+            await unitOfWork.Save(cancellationToken);
+
+            return new ToggleLikeResult
+            {
+                Liked = isLiked,
+                LikeCount = product.LikeCount
+            };
         }
     }
 }

@@ -45,5 +45,15 @@ namespace StoreApp.Domain.Entities
         public int ViewCount { get; set; } = 0;
 
         public int LikeCount { get; set; } = 0;
+
+        public ICollection<ProductReview>? Reviews { get; set; }
+
+        public List<ProductImage>? ProductImages { get; set; } = new();
+
+        public List<ProductColor>? Colors { get; set; } = new();
+
+        public List<ProductSize>? Sizes { get; set; } = new();
+
+        public decimal? OldPrice { get; set; }
     }
 }

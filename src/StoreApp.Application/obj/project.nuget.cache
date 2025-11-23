@@ -134,15 +134,6 @@
       "targetGraphs": [
         "net8.0"
       ]
-    },
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\StoreApp.Application.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\StoreApp.Application.csproj",
-      "targetGraphs": []
     }
   ]
 }

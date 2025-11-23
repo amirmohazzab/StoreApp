@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Application.Features.ProductFeature.Commands.UpdateLikeCount
 {
-    public class UpdateProductLikeCountCommand: IRequest<bool>
+    public class UpdateProductLikeCountCommand: IRequest<int>
     {
         public int ProductId { get; set; }
 
         public bool IsLiked { get; set; }
     }
 
-    public class UpdateProductLikeCountCommandHandler : IRequestHandler<UpdateProductLikeCountCommand, bool>
+    public class UpdateProductLikeCountCommandHandler : IRequestHandler<UpdateProductLikeCountCommand, int>
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -25,24 +25,25 @@ namespace StoreApp.Application.Features.ProductFeature.Commands.UpdateLikeCount
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> Handle(UpdateProductLikeCountCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateProductLikeCountCommand request, CancellationToken cancellationToken)
         {
-            var productRepo = unitOfWork.Repository<Product>();
+            var product = await unitOfWork.Repository<Product>()
+         .GetByIdAsync(request.ProductId, cancellationToken);
 
-            var product = await unitOfWork.Repository<Product>().GetByIdAsync(request.ProductId, cancellationToken);
-            if (product == null)
-                return false;
+            if (product == null) return 0;
 
-            // ✅ افزایش یا کاهش تعداد لایک بر اساس وضعیت جدید
             if (request.IsLiked)
-                product.LikeCount += 1;
-            else if (product.LikeCount > 0)
-                product.LikeCount -= 1;
+                product.LikeCount++;
+            else
+                product.LikeCount--;
+
+            if (product.LikeCount < 0)
+                product.LikeCount = 0;
 
             unitOfWork.Repository<Product>().Update(product);
             await unitOfWork.Save(cancellationToken);
 
-            return true;
+            return product.LikeCount; 
         }
     }
 }

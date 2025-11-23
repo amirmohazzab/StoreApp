@@ -18,6 +18,10 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetAllProducts
         //public int? CategoryId { get; set; }
         //public int? BrandId { get; set; }
         //public string? Search { get; set; }
+
+        //public string? Sort { get; set; }
+
+        public int Count { get; set; } = 2;
     }
 
     public class GetAllFeaturesQueryHandler : IRequestHandler<GetAllFeaturesQuery, List<ProductDto>>
@@ -34,10 +38,14 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetAllProducts
 
         public async Task<List<ProductDto>> Handle(GetAllFeaturesQuery request, CancellationToken cancellationToken)
         {
-            var products = await unitOfWork.Repository<Product>()
+            var query = unitOfWork.Repository<Product>()
                 .GetQueryable()
                 .Where(p => p.IsActive)
+                .OrderByDescending(p => p.Id);
+
+            return await query
                 .ProjectTo<ProductDto>(mapper.ConfigurationProvider)
+                .Take(request.Count)
                 .ToListAsync(cancellationToken);
 
             //var query = unitOfWork.Repository<Product>().GetQueryable().Where(p => p.IsActive);
@@ -54,8 +62,6 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetAllProducts
             //var products = await query
             //    .ProjectTo<ProductDto>(mapper.ConfigurationProvider)
             //    .ToListAsync(cancellationToken);
-
-            return products;
         }
     }
 }
