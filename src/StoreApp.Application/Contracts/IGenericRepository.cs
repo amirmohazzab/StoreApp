@@ -21,6 +21,8 @@ namespace StoreApp.Application.Contracts
 
         Task Delete(T entity, CancellationToken cancellationToken);
 
+        Task HardDelete(T entity, CancellationToken cancellationToken);
+
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken);
 
         Task<bool> AnyAsync(CancellationToken cancellationToken);
@@ -46,5 +48,6 @@ namespace StoreApp.Application.Contracts
         IQueryable<TResult> Select<TResult>(Expression<Func<T, TResult>> selector);
 
         IQueryable<T> GetQueryable();
+
     }
 }

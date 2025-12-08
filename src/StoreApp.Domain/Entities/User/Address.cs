@@ -28,5 +28,7 @@ namespace StoreApp.Domain.Entities.User
         public string PostalCode { get; set; }
 
         public User User { get; set; }
+
+        public string? Place { get; set; }
     }
 }

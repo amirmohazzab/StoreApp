@@ -1,15 +1,16 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using StoreApp.Application.Interfaces;
 using StoreApp.Domain.Entities.User;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace StoreApp.Data.Repositories
 {
@@ -21,7 +22,9 @@ namespace StoreApp.Data.Repositories
 
         private readonly SymmetricSecurityKey key;
 
-        public TokenService(IConfiguration configuration, UserManager<User> userManager)
+        private readonly IPermissionService permissionService;
+
+        public TokenService(IConfiguration configuration, UserManager<User> userManager, IPermissionService permissionService)
         {
             this.configuration = configuration;
             this.userManager = userManager;
@@ -33,18 +36,26 @@ namespace StoreApp.Data.Repositories
             }
 
             this.key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
+            this.permissionService = permissionService;
         }
 
         public async Task<string> CreateToken(User user)
         {
             if (user.PhoneNumber == null) return null;
+            
             var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.GivenName, user.DisplayName ?? ""),
                 new Claim(JwtRegisteredClaimNames.NameId, user.Id ?? "" ),
-                new Claim("PhoneNumber", user.PhoneNumber ?? "")
+                new Claim("PhoneNumber", user.PhoneNumber ?? ""),
             };
 
+            var permissions = await permissionService.GetUserPermissionsAsync(user);
+            if (permissions != null && permissions.Any())
+            {
+                claims.Add(new Claim("permissions", JsonConvert.SerializeObject(permissions)));
+            }
+                
             var roles = await userManager.GetRolesAsync(user);
 
             if (roles != null && roles.Any())

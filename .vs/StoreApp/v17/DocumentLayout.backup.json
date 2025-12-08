@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\admin\\adminuserfeature\\commands\\deleteuser\\deleteadminusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\admin\\adminuserfeature\\commands\\deleteuser\\deleteadminusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.data\\persistence\\context\\storeappdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|solutionrelative:src\\storeapp.data\\persistence\\context\\storeappdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\basketfeature\\commands\\clearbasket\\clearbasketcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\basketfeature\\commands\\clearbasket\\clearbasketcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\admin\\adminproductbrandfeature\\commands\\deleteproductbrand\\deleteproductbrandcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\admin\\adminproductbrandfeature\\commands\\deleteproductbrand\\deleteproductbrandcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\interfaces\\ibasketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\interfaces\\ibasketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.data\\persistence\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|solutionrelative:src\\storeapp.data\\persistence\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.data\\repositories\\basketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA112688-D6E2-45F7-B473-3D1B171D7731}|src\\StoreApp.Data\\StoreApp.Data.csproj|solutionrelative:src\\storeapp.data\\repositories\\basketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\admin\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\admin\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\admin\\adminproductfeature\\commands\\deleteproduct\\admindeleteproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\admin\\adminproductfeature\\commands\\deleteproduct\\admindeleteproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,63 +43,76 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BasketController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\BasketController.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\BasketController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\BasketController.cs",
-              "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\BasketController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
+              "Title": "DeleteAdminUserCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminUserFeature\\Commands\\DeleteUser\\DeleteAdminUserCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\Admin\\AdminUserFeature\\Commands\\DeleteUser\\DeleteAdminUserCommandHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminUserFeature\\Commands\\DeleteUser\\DeleteAdminUserCommandHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\Admin\\AdminUserFeature\\Commands\\DeleteUser\\DeleteAdminUserCommandHandler.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T13:25:58.822Z",
+              "WhenOpened": "2025-12-07T12:30:25.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClearBasketCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\BasketFeature\\Commands\\ClearBasket\\ClearBasketCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\BasketFeature\\Commands\\ClearBasket\\ClearBasketCommandHandler.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\BasketFeature\\Commands\\ClearBasket\\ClearBasketCommandHandler.cs",
-              "RelativeToolTip": "src\\StoreApp.Application\\Features\\BasketFeature\\Commands\\ClearBasket\\ClearBasketCommandHandler.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "StoreAppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Persistence\\Context\\StoreAppDbContext.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Data\\Persistence\\Context\\StoreAppDbContext.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Persistence\\Context\\StoreAppDbContext.cs",
+              "RelativeToolTip": "src\\StoreApp.Data\\Persistence\\Context\\StoreAppDbContext.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T13:20:01.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BasketRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Repositories\\BasketRepository.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Data\\Repositories\\BasketRepository.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Repositories\\BasketRepository.cs",
-              "RelativeToolTip": "src\\StoreApp.Data\\Repositories\\BasketRepository.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAHAAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T09:19:23.336Z"
+              "WhenOpened": "2025-12-07T09:07:10.024Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IBasketRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Interfaces\\IBasketRepository.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Interfaces\\IBasketRepository.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Interfaces\\IBasketRepository.cs",
-              "RelativeToolTip": "src\\StoreApp.Application\\Interfaces\\IBasketRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Persistence\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Data\\Persistence\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Data\\Persistence\\GenericRepository.cs",
+              "RelativeToolTip": "src\\StoreApp.Data\\Persistence\\GenericRepository.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T09:19:09.791Z"
+              "WhenOpened": "2025-12-07T08:13:09.232Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DeleteProductBrandCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminProductBrandFeature\\Commands\\DeleteProductBrand\\DeleteProductBrandCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\Admin\\AdminProductBrandFeature\\Commands\\DeleteProductBrand\\DeleteProductBrandCommandHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminProductBrandFeature\\Commands\\DeleteProductBrand\\DeleteProductBrandCommandHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\Admin\\AdminProductBrandFeature\\Commands\\DeleteProductBrand\\DeleteProductBrandCommandHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T14:58:34.136Z"
+              "WhenOpened": "2025-12-07T07:30:02.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminDeleteProductCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminProductFeature\\Commands\\DeleteProduct\\AdminDeleteProductCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\Admin\\AdminProductFeature\\Commands\\DeleteProduct\\AdminDeleteProductCommandHandler.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminProductFeature\\Commands\\DeleteProduct\\AdminDeleteProductCommandHandler.cs",
+              "RelativeToolTip": "src\\StoreApp.Application\\Features\\Admin\\AdminProductFeature\\Commands\\DeleteProduct\\AdminDeleteProductCommandHandler.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T18:04:45.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\Admin\\ProductController.cs",
+              "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\Admin\\ProductController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\Admin\\ProductController.cs",
+              "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\Admin\\ProductController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAAD0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T15:24:30.052Z"
             }
           ]
         }

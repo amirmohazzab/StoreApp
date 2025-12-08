@@ -359,6 +359,12 @@ namespace StoreApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<double>("AverageRating")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -403,6 +409,9 @@ namespace StoreApp.Data.Migrations
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ReviewCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -417,6 +426,8 @@ namespace StoreApp.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("CreatedBy");
 
@@ -475,6 +486,38 @@ namespace StoreApp.Data.Migrations
                     b.HasIndex("LastModifiedBy");
 
                     b.ToTable("ProductBrands");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.ProductColor", b =>
@@ -717,6 +760,9 @@ namespace StoreApp.Data.Migrations
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
 
+                    b.Property<string>("Place")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -735,6 +781,31 @@ namespace StoreApp.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Addresss");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Group")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permissions");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.User.Role", b =>
@@ -765,6 +836,24 @@ namespace StoreApp.Data.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.RolePermission", b =>
+                {
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("RoleId", "PermissionId");
+
+                    b.HasIndex("PermissionId");
+
+                    b.ToTable("RolePermissions");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.User.User", b =>
                 {
                     b.Property<string>("Id")
@@ -772,6 +861,14 @@ namespace StoreApp.Data.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("AvatarPublicId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AvatarUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -787,11 +884,17 @@ namespace StoreApp.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MainRole")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NationalCode")
                         .HasColumnType("nvarchar(max)");
@@ -867,6 +970,30 @@ namespace StoreApp.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserLikes");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.UserPermission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermissionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserPermissions");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.User.UserRole", b =>
@@ -1057,6 +1184,10 @@ namespace StoreApp.Data.Migrations
 
             modelBuilder.Entity("StoreApp.Domain.Entities.Product", b =>
                 {
+                    b.HasOne("StoreApp.Domain.Entities.ProductCategory", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("StoreApp.Domain.Entities.User.User", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedBy")
@@ -1078,6 +1209,8 @@ namespace StoreApp.Data.Migrations
                         .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("CreatedByUser");
 
@@ -1166,6 +1299,25 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.RolePermission", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.User.Permission", "Permission")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StoreApp.Domain.Entities.User.Role", "Role")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.User.UserLike", b =>
                 {
                     b.HasOne("StoreApp.Domain.Entities.Product", "Product")
@@ -1180,6 +1332,25 @@ namespace StoreApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.UserPermission", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.User.Permission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany("UserPermissions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
 
                     b.Navigation("User");
                 });
@@ -1229,8 +1400,20 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("UserLikes");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.ProductCategory", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.Permission", b =>
+                {
+                    b.Navigation("RolePermissions");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.User.Role", b =>
                 {
+                    b.Navigation("RolePermissions");
+
                     b.Navigation("UserRoles");
                 });
 
@@ -1239,6 +1422,8 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("Addresses");
 
                     b.Navigation("UserLikes");
+
+                    b.Navigation("UserPermissions");
 
                     b.Navigation("UserRoles");
                 });

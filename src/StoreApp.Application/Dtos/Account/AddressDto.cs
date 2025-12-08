@@ -27,5 +27,7 @@ namespace StoreApp.Application.Dtos.Account
         public string Number { get; set; }
 
         public string PostalCode { get; set; }
+
+        public string Place { get; set; }
     }
 }

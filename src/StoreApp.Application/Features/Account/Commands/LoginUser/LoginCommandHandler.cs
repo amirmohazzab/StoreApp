@@ -21,17 +21,20 @@ namespace StoreApp.Application.Features.Account.Commands.LoginUser
         private readonly SignInManager<User> signInManager;
         private readonly IUnitOfWork unitOfWork;
         private readonly ITokenService tokenService;
+        private readonly UserManager<User> userManager;
 
         public LoginCommandHandler(
             IMapper mapper, 
             SignInManager<User> signInManager, 
             IUnitOfWork unitOfWork, 
-            ITokenService tokenService)
+            ITokenService tokenService,
+            UserManager<User> userManager)
         {
             this.mapper = mapper;
             this.signInManager = signInManager;
             this.unitOfWork = unitOfWork;
             this.tokenService = tokenService;
+            this.userManager = userManager;
         }
 
         public async Task<UserDto> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -45,11 +48,15 @@ namespace StoreApp.Application.Features.Account.Commands.LoginUser
 
             if (!result.Succeeded) throw new BadRequestEntityException("UserName or Password wrong");
 
-            var mapUser = mapper.Map<UserDto>(user);
-            mapUser.Token = await tokenService.CreateToken(user);
+            var roles = await userManager.GetRolesAsync(user);
 
-            return mapUser;
+            var dto = mapper.Map<UserDto>(user);
 
+            dto.Token = await tokenService.CreateToken(user);
+
+            dto.Role = roles.FirstOrDefault() ?? "User";
+
+            return dto;
         }
     }
 }

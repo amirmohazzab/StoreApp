@@ -46,7 +46,15 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<UserLike> UserLikes { get; set; }
 
-        public DbSet<ProductReview> Reviews { get; set; } 
+        public DbSet<ProductReview> Reviews { get; set; }
+
+        public DbSet<Permission> Permissions { get; set; }
+
+        public DbSet<RolePermission> RolePermissions { get; set; }
+
+        public DbSet<UserPermission> UserPermissions { get; set; }
+
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +70,34 @@ namespace StoreApp.Data.Persistence.Context
             modelBuilder.Entity<OrderItem>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<Portal>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<ProductReview>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ProductCategory>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ProductSize>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ProductColor>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ProductImage>().HasQueryFilter(p => p.IsDelete == false);
         }
     }
 }
+
+
+//protected override void OnModelCreating(ModelBuilder modelBuilder)
+//{
+
+//    // اعمال فیلتر حذف نرم روی همه Entity هایی که IsDelete دارند
+//    foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+//    {
+//        if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType))
+//        {
+//            var method = typeof(AppDbContext)
+//                .GetMethod(nameof(SetSoftDeleteFilter), System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)
+//                .MakeGenericMethod(entityType.ClrType);
+
+//            method.Invoke(null, new object[] { modelBuilder });
+//        }
+//    }
+//}
+
+//private static void SetSoftDeleteFilter<TEntity>(ModelBuilder modelBuilder)
+//    where TEntity : BaseEntity
+//{
+//    modelBuilder.Entity<TEntity>().HasQueryFilter(x => !x.IsDelete);
+//}

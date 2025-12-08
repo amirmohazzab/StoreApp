@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace StoreApp.Domain.Entities
@@ -40,20 +41,34 @@ namespace StoreApp.Domain.Entities
 
         public User.User? LastModifiedByUser { get; set; }
 
+        [JsonIgnore]
         public ICollection<UserLike>? UserLikes { get; set; } = new List<UserLike>();
 
         public int ViewCount { get; set; } = 0;
 
         public int LikeCount { get; set; } = 0;
 
+        [JsonIgnore]
         public ICollection<ProductReview>? Reviews { get; set; }
 
+        [JsonIgnore]
         public List<ProductImage>? ProductImages { get; set; } = new();
 
+        [JsonIgnore]
         public List<ProductColor>? Colors { get; set; } = new();
 
+        [JsonIgnore]
         public List<ProductSize>? Sizes { get; set; } = new();
 
         public decimal? OldPrice { get; set; }
+
+        public double AverageRating { get; set; }
+
+        public int ReviewCount { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        [JsonIgnore]
+        public ProductCategory Category { get; set; }
     }
 }

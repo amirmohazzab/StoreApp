@@ -34,6 +34,8 @@ namespace StoreApp.Application.Features.Account.Commands.CreateAddress
 
         public string PostalCode { get; set; }
 
+        public string Place { get; set; }
+
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateAddressCommand, Address>();

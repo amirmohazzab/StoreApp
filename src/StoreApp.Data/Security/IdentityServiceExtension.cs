@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -34,15 +35,70 @@ namespace StoreApp.Data.Security
 
             services.Configure(ConfigureOptionsIdentity());
 
-            services.AddAuthorization();
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-           .AddJwtBearer(options =>
-           {
-               options.SaveToken = true;
-               options.TokenValidationParameters = OptionsTokenValidationParameters(configuration);
-               options.Events = JwtOptionsEvents();
-           });
+          .AddJwtBearer(options =>
+          {
+              options.SaveToken = true;
+              options.TokenValidationParameters = OptionsTokenValidationParameters(configuration);
+              options.Events = JwtOptionsEvents();
+          });
+
+            services.AddAuthorization(options =>
+            {
+                // چون داخل Infrastructure هستیم استفاده از scoped provider کاملاً درست است
+                using var scope = services.BuildServiceProvider().CreateScope();
+                var context = scope.ServiceProvider.GetRequiredService<StoreAppDbContext>();
+
+                var permissions = context.Permissions.ToList();
+
+                foreach (var permission in permissions)
+                {
+                    options.AddPolicy(permission.Name,
+                        policy => policy.Requirements.Add(new PermissionRequirement(permission.Name)));
+                }
+            });
+
+            services.AddScoped<IAuthorizationHandler, PermissionHandler>();
+
+            //    services.AddIdentityCore<User>(options =>
+            //    {
+            //        options.Password.RequireDigit = true;
+            //        options.Password.RequireLowercase = true;
+            //        options.Password.RequireNonAlphanumeric = true;
+            //        options.Password.RequireUppercase = true;
+            //        options.Password.RequiredLength = 5;
+            //        options.Password.RequiredUniqueChars = 1;
+            //    })
+            //.AddRoles<Role>()
+            //.AddRoleManager<RoleManager<Role>>()
+            //.AddSignInManager<SignInManager<User>>()
+            //.AddUserManager<UserManager<User>>()
+            //.AddEntityFrameworkStores<StoreAppDbContext>()
+            //.AddDefaultTokenProviders();
+
+            //    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(options =>
+            //    {
+            //        options.SaveToken = true;
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateIssuerSigningKey = true,
+            //            IssuerSigningKey = new SymmetricSecurityKey(
+            //                Encoding.UTF8.GetBytes(configuration["JWTConfiguration:Key"]!)
+            //            ),
+            //            ValidateIssuer = true,
+            //            ValidIssuer = configuration["JWTConfiguration:Issuer"],
+
+            //            ValidateAudience = configuration.GetValue<bool>("JWTConfiguration:ValidateAudience"),
+            //            ValidAudience = configuration["JWTConfiguration:Audience"],
+
+            //            ValidateLifetime = true,
+            //            ClockSkew = TimeSpan.Zero
+            //        };
+            //    });
+
+            //    services.AddAuthorization();
+            //    return services;
         }
 
         private static TokenValidationParameters OptionsTokenValidationParameters(IConfiguration configuration)
@@ -144,7 +200,5 @@ namespace StoreApp.Data.Security
                 // options.User.RequireUniqueEmail = true;
             };
         }
-
-
     }
 }

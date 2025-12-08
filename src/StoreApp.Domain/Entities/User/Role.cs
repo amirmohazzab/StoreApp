@@ -10,5 +10,7 @@ namespace StoreApp.Domain.Entities.User
     public class Role : IdentityRole<string>
     {
         public ICollection<UserRole>? UserRoles { get; set; }
+
+        public ICollection<RolePermission> RolePermissions { get; set; }
     }
 }

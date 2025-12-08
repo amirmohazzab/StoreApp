@@ -72,9 +72,11 @@ namespace StoreApp.Web
             app.UseCors("AllowAll");
 
             app.UseMiddleware<MiddlewareExceptionHandler>();
-
+            
             app.UseAuthentication();
+            app.UseMiddleware<PermissionMiddleware>();
             app.UseAuthorization();
+            
 
             app.MapControllers();
 

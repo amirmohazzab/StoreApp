@@ -44,6 +44,11 @@ namespace StoreApp.Data.Persistence.Configuration
             builder.HasMany(p => p.Sizes).WithOne(s => s.Product).HasForeignKey(s => s.ProductId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey("CategoryId")
+                .IsRequired(false); 
         }
     }
 }

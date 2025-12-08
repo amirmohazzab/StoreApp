@@ -18,7 +18,5 @@ namespace StoreApp.Application.Interfaces
         Task<List<CustomerBasket>> GetAllBasketAsync(CancellationToken cancellation);
 
         Task<CustomerBasket> AddItemToBasketAsync(CustomerBasket basket, CancellationToken cancellationToken);
-
-
     }
 }

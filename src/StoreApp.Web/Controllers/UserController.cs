@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreApp.Application.Dtos.Account;
+using StoreApp.Application.Features.Account.Commands.CreateAddress;
+using StoreApp.Application.Features.Account.Queries.GetAddresses;
 using StoreApp.Application.Features.UserProfile.Commands;
 using StoreApp.Application.Features.UserProfile.Queries;
 
@@ -21,6 +23,20 @@ namespace StoreApp.Web.Controllers
         public async Task<IActionResult> EditUserInfo([FromBody] EditUserProfileCommand command, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(command, cancellationToken));
+        }
+
+        [Authorize]
+        [HttpGet("address")]
+        public async Task<ActionResult<IEnumerable<AddressDto>>> GetAddresses(CancellationToken cancellationToken)
+        {
+            return Ok(await Mediator.Send(new GetAddressesQuery(), cancellationToken));
+        }
+
+        [Authorize]
+        [HttpPost("create-address")]
+        public async Task<ActionResult<AddressDto>> CreateAddresses([FromBody] CreateAddressCommand request, CancellationToken cancellationToken)
+        {
+            return Ok(await Mediator.Send(request, cancellationToken));
         }
     }
 }

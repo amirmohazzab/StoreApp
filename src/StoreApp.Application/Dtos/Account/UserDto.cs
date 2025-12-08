@@ -25,5 +25,7 @@ namespace StoreApp.Application.Dtos.Account
         {
             profile.CreateMap<User, UserDto>().ReverseMap();
         }
+
+        public string Role { get; set; }
     }
 }

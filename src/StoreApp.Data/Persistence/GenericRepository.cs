@@ -48,11 +48,26 @@ namespace StoreApp.Data.Persistence
 
         public async Task Delete(T entity, CancellationToken cancellationToken)
         {
-            var record = await GetByIdAsync(entity.Id, cancellationToken);
-            record.IsDelete = true;
-            UpdateAsync(entity);
+            entity.IsDelete = true;
+            await UpdateAsync(entity);
+            //if (dbContext.Entry(entity).State == EntityState.Detached)
+            //    dbSet.Attach(entity);
+
+            //// Soft Delete
+            //entity.IsDelete = true;
+
+            //dbContext.Entry(entity)
+            //    .Property(x => x.IsDelete)
+            //    .IsModified = true;
+
+            //return Task.CompletedTask;
         }
 
+        public Task HardDelete(T entity, CancellationToken cancellationToken)
+        {
+            dbSet.Remove(entity);
+            return Task.CompletedTask;
+        }
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken)
         {
             return await dbSet.AnyAsync(expression, cancellationToken);

@@ -15,6 +15,7 @@ using StoreApp.Application.Features.ProductFeature.Queries.GetRelated;
 using StoreApp.Application.Features.ProductFeature.Queries.GetReview;
 using StoreApp.Application.Features.UserLikes.Commands;
 using StoreApp.Application.Features.UserLikes.Queries;
+using StoreApp.Application.Features.UserProfile.Commands;
 using StoreApp.Domain.Entities;
 
 namespace StoreApp.Web.Controllers
@@ -68,11 +69,11 @@ namespace StoreApp.Web.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{productId}/reviews")]
-        public async Task<IActionResult> GetReviews(int productId, CancellationToken cancellationToken)
-        {
-            return Ok(await Mediator.Send(new GetProductReviewsQuery { ProductId = productId }, cancellationToken));
-        }
+        //[HttpGet("{productId}/review")]
+        //public async Task<IActionResult> GetReviews(int productId, CancellationToken cancellationToken)
+        //{
+        //    return Ok(await Mediator.Send(new GetProductReviewsQuery { ProductId = productId }, cancellationToken));
+        //}
 
         [Authorize]
         [HttpPost("{productId}/review")]
@@ -89,6 +90,26 @@ namespace StoreApp.Web.Controllers
             return Ok(new { liked = result });
         }
 
+        [HttpGet("{id}/review")]
+        public async Task<IActionResult> GetProductReviews(int id, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 5, CancellationToken cancellationToken = default)
+        {
+            var result = await Mediator.Send(new GetProductReviewsQuery { ProductId = id, PageIndex = pageIndex, PageSize = pageSize }, cancellationToken);
+            return Ok(result);
+        }
 
+        [HttpPut("review/{id}")]
+        public async Task<IActionResult> EditReview(int id, [FromBody] EditReviewCommand command, CancellationToken cancellationToken)
+        {
+            command.Id = id;
+            var updated = await Mediator.Send(command, cancellationToken);
+            return Ok(updated);
+        }
+
+        [HttpDelete("review/{id}")]
+        public async Task<IActionResult> DeleteReview(int id, CancellationToken cancellationToken)
+        {
+            var result = await Mediator.Send(new DeleteReviewCommand { Id = id }, cancellationToken);
+            return Ok(result);
+        }
     }
 }
