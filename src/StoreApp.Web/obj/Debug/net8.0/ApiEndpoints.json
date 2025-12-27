@@ -120,6 +120,109 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.OrderController",
+    "Method": "GetOrders",
+    "RelativePath": "api/admin/Order",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FromDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SortBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SortDesc",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.OrderController",
+    "Method": "GetOrderDetail",
+    "RelativePath": "api/admin/Order/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.OrderController",
+    "Method": "UpdateOrderStatus",
+    "RelativePath": "api/admin/Order/change-status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "StoreApp.Application.Dtos.Admin.AdminOrderDto.UpdateOrderStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.OrderController",
+    "Method": "GetPaymentStatus",
+    "RelativePath": "api/admin/Order/Payment-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.OrderController",
+    "Method": "GetTotalRevenue",
+    "RelativePath": "api/admin/Order/stats/total-revenue",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.Admin.PermissionController",
     "Method": "GetAll",
     "RelativePath": "api/admin/Permission",
@@ -242,6 +345,16 @@
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetAdminWishlist",
+    "RelativePath": "api/admin/Product/at-least-one-wishlisted",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
     "Method": "Create",
     "RelativePath": "api/admin/Product/create",
     "HttpMethod": "POST",
@@ -347,6 +460,189 @@
     "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
     "Method": "GetAll",
     "RelativePath": "api/admin/Product/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetMostAddedToCartProducts",
+    "RelativePath": "api/admin/Product/most-added-to-basket",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetMostReviewedProducts",
+    "RelativePath": "api/admin/Product/most-reviewed-products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetMostSoldProducts",
+    "RelativePath": "api/admin/Product/most-sold-products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetAdminWishlist",
+    "RelativePath": "api/admin/Product/most-wishlisted-products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "take",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetReviews",
+    "RelativePath": "api/admin/Product/review",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProductName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Rating",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FromDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Text",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsApproved",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "UpdateReview",
+    "RelativePath": "api/admin/Product/review/{reviewId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "StoreApp.Application.Dtos.Admin.AdminProductReviewDto.UpdateReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "DeleteReview",
+    "RelativePath": "api/admin/Product/review/{reviewId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "ApproveReview",
+    "RelativePath": "api/admin/Product/review/approve",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "StoreApp.Application.Features.Admin.AdminApproveReview.Commands.ApproveReviewCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "GetAtLeastOneReview",
+    "RelativePath": "api/admin/Product/review/at-least-one-review",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -784,6 +1080,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.UserController",
+    "Method": "GetDashboardUsers",
+    "RelativePath": "api/admin/User/dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -1403,6 +1709,22 @@
     "ContainingType": "StoreApp.Web.Controllers.ProductController",
     "Method": "ToggleLike",
     "RelativePath": "api/Product/toggle-like/{productId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.ProductController",
+    "Method": "ToggleWishlist",
+    "RelativePath": "api/Product/toggle-wishlist/{productId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

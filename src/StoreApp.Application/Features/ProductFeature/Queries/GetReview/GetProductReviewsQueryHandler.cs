@@ -47,7 +47,7 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.GetReview
 
             var query = unitOfWork.Repository<ProductReview>()
             .GetQueryable()
-            .Where(r => r.ProductId == request.ProductId)
+            .Where(r => r.ProductId == request.ProductId && r.IsApproved == true)
             .Include(r => r.User)
             .OrderByDescending(r => r.Created);
 

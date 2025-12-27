@@ -111,6 +111,8 @@ namespace StoreApp.Application.Features.OrderFeature.Commands.Create
                 Authority = "NotApplicable",
                 TrackingCode = "NotApplicable",
                 CreatedBy = currentUserService.UserId,
+                OrderStatus = OrderStatus.PaymentSuccess,
+                IsFinally = true
             };
 
             var result = await unitOfWork.Repository<Order>().AddAsync(order, cancellationToken);

@@ -40,7 +40,8 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.Get
                 .Include(p => p.ProductImages)
                 .Include(p => p.Colors)
                 .Include(p => p.Sizes)
-                .Include(p => p.UserLikes) 
+                .Include(p => p.UserLikes)
+                .Include(p => p.UserWishlists)
                 .Where(p => p.Id == request.Id)
                 .Select(p => new ProductDto
                 {
@@ -57,7 +58,8 @@ namespace StoreApp.Application.Features.ProductFeature.Queries.Get
                     Liked = p.UserLikes.Any(x => x.UserId == userId && x.Liked),
 
                     AverageRating = p.Reviews.Any() ? p.Reviews.Average(r => r.Rating) : 0,
-                    ReviewCount = p.Reviews.Count()
+                    ReviewCount = p.Reviews.Count(),
+                    IsInWishlist = p.UserWishlists.Any(x => x.UserId == userId && x.ProductId == p.Id),
                 })
                 .FirstOrDefaultAsync(cancellationToken);
 

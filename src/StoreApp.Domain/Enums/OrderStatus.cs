@@ -21,6 +21,9 @@ namespace StoreApp.Domain.Enums
         [EnumMember(Value = "Shipped")]
         Shipped,
 
+        [EnumMember(Value = "Delivered")]
+        Delivered,
+
         [EnumMember(Value = "Cancelled")]
         Cancelled
     }

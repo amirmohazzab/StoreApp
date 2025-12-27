@@ -1,14 +1,18 @@
 ﻿using AutoMapper;
 using StoreApp.Application.Dtos.Account;
+using StoreApp.Application.Dtos.Admin.AdminOrderDto;
 using StoreApp.Application.Dtos.Admin.AdminProductBrandDto;
 using StoreApp.Application.Dtos.Admin.AdminProductCategoryDto;
 using StoreApp.Application.Dtos.Admin.AdminProductDto;
+using StoreApp.Application.Dtos.Admin.AdminProductReviewDto;
 using StoreApp.Application.Dtos.Admin.AdminProductTypeDtp;
 using StoreApp.Application.Dtos.Admin.AdminUserDto;
+using StoreApp.Application.Dtos.Admin.AdminWishlist;
 using StoreApp.Application.Dtos.ProductDto;
 using StoreApp.Application.Features.Admin.AdminProductFeature.Commands.CreateProduct;
 using StoreApp.Application.Features.UserProfile.Commands;
 using StoreApp.Domain.Entities;
+using StoreApp.Domain.Entities.Order;
 using StoreApp.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -112,6 +116,32 @@ namespace StoreApp.Application.Common.Mapping
                 .ForMember(d => d.ProductCategoryName, o => o.MapFrom(s => s.Category.Name))
                 .ForMember(d => d.ProductBrandName, o => o.MapFrom(s => s.ProductBrand.Title))
                 .ForMember(d => d.ProductTypeName, o => o.MapFrom(s => s.ProductType.Title));
+
+            CreateMap<UserWishlist, AdminMostWishlistedProductDto>()
+                 //.ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
+                 //.ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.User.DisplayName))
+                 //.ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Product.Price))
+                 .ForMember(dest => dest.ProductTitle, opt => opt.MapFrom(src => src.Product.Title));
+
+            CreateMap<ProductReview, AdminProductReviewDto>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Title))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
+                .ForMember(d => d.IsApproved, o => o.MapFrom(s => s.IsApproved));
+
+            CreateMap<Order, AdminOrderDto>()
+                .ForMember(d => d.Total, o => o.MapFrom(s => s.SubTotal + s.DeliveryMethod.Price))
+                .ForMember(d => d.UserName, o => o.MapFrom(s => s.User.UserName))
+                .ForMember(d => d.OrderStatus, o => o.MapFrom(s => s.OrderStatus.ToString()));
+
+            CreateMap<Order, AdminOrderListDto>()
+                .ForMember(d => d.Total, o => o.MapFrom(s => s.SubTotal + s.DeliveryMethod.Price));
+
+            CreateMap<OrderItem, AdminOrderItemDto>()
+                .ForMember(d => d.ProductId, o => o.MapFrom(s => s.ItemOrdered.ProductItemId))
+                .ForMember(d => d.ProductName, o => o.MapFrom(s => s.ItemOrdered.ProductName))
+                .ForMember(d => d.Brand, o => o.MapFrom(s => s.ItemOrdered.ProductBrandName))
+                .ForMember(d => d.Type, o => o.MapFrom(s => s.ItemOrdered.ProductTypeName))
+                .ForMember(d => d.PictureUrl, o => o.MapFrom(s => s.ItemOrdered.PictureUrl));
 
         }
 

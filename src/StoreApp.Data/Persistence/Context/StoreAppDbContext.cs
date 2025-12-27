@@ -56,6 +56,8 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
+        public DbSet<UserWishlist> Wishlists { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -25,18 +25,18 @@ namespace StoreApp.Application.Wrappers
             PageNumber = pageNumber;
             PageSize = pageSize;
         }
-
-        //public int PageIndex { get; set; }
-        //public int PageSize { get; set; }
-        //public int Count { get; set; }
-        //public List<T> Data { get; set; } = new();
-
-        //public PaginatedResult(List<T> data, int count, int pageIndex, int pageSize)
-        //{
-        //    Data = data;
-        //    Count = count;
-        //    PageIndex = pageIndex;
-        //    PageSize = pageSize;
-        //}
     }
 }
+
+//public int PageIndex { get; set; }
+//public int PageSize { get; set; }
+//public int Count { get; set; }
+//public List<T> Data { get; set; } = new();
+
+//public PaginatedResult(List<T> data, int count, int pageIndex, int pageSize)
+//{
+//    Data = data;
+//    Count = count;
+//    PageIndex = pageIndex;
+//    PageSize = pageSize;
+//}

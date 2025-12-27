@@ -47,7 +47,7 @@ namespace StoreApp.Application.Contracts.Specification
         public int Take { get; set; }
         public int Skip { get; set; }
 
-        public bool IsPagingEnabled { get; set; } = true;
+        public bool IsPagingEnabled { get; set; } 
 
         protected void ApplyPaging(int skip, int take, bool isPagingEnabled = true)
         {

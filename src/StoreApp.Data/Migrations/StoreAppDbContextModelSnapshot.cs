@@ -612,6 +612,9 @@ namespace StoreApp.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
@@ -1011,6 +1014,46 @@ namespace StoreApp.Data.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.UserWishlist", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId", "ProductId")
+                        .IsUnique();
+
+                    b.ToTable("Wishlists");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("StoreApp.Domain.Entities.User.Role", null)
@@ -1374,6 +1417,24 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.User.UserWishlist", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Product", "Product")
+                        .WithMany("UserWishlists")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany("UserWishlists")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasket", b =>
                 {
                     b.Navigation("Items");
@@ -1398,6 +1459,8 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("Sizes");
 
                     b.Navigation("UserLikes");
+
+                    b.Navigation("UserWishlists");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.ProductCategory", b =>
@@ -1426,6 +1489,8 @@ namespace StoreApp.Data.Migrations
                     b.Navigation("UserPermissions");
 
                     b.Navigation("UserRoles");
+
+                    b.Navigation("UserWishlists");
                 });
 #pragma warning restore 612, 618
         }

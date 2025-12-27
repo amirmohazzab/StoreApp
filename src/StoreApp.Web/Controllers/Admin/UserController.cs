@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StoreApp.Application.Features.Admin.AdminDashboard;
 using StoreApp.Application.Features.Admin.AdminPermissionFeature.Commands.UpdatePermission;
 using StoreApp.Application.Features.Admin.AdminPermissionFeature.Queries.GetPermission;
 using StoreApp.Application.Features.Admin.AdminUserFeature.Commands.CreateUser;
@@ -72,6 +73,13 @@ namespace StoreApp.Web.Controllers.Admin
         {
             var perms = await Mediator.Send(new GetUserPermissionsQuery { UserId = userId });
             return Ok(perms);
+        }
+
+        [HttpGet("dashboard")]
+        public async Task<ActionResult> GetDashboardUsers()
+        {
+            var result = await Mediator.Send(new GetAdminDashboardStatsQuery());
+            return Ok(result.TotalUsers);
         }
     }
 }

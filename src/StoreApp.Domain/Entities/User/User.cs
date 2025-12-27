@@ -28,5 +28,7 @@ namespace StoreApp.Domain.Entities.User
         public string AvatarPublicId { get; set; }
 
         public ICollection<UserPermission> UserPermissions { get; set; } = new List<UserPermission>();
+
+        public ICollection<UserWishlist> UserWishlists { get; set; } = new List<UserWishlist>();
     }
 }

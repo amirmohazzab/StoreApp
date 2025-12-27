@@ -64,5 +64,7 @@ namespace StoreApp.Application.Dtos.ProductDto
         public List<string> Colors { get; set; } = new();
 
         public List<string> Sizes { get; set; } = new();
+
+        public bool IsInWishlist { get; set; } 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreApp.Application.Dtos.ProductDto;
@@ -7,6 +8,7 @@ using StoreApp.Application.Features.ProductCategoryFeature.Query;
 using StoreApp.Application.Features.ProductFeature.Commands.AddProductReview;
 using StoreApp.Application.Features.ProductFeature.Commands.IncrementViewCount;
 using StoreApp.Application.Features.ProductFeature.Commands.ToggleProductLike;
+using StoreApp.Application.Features.ProductFeature.Commands.ToggleProductWishlist;
 using StoreApp.Application.Features.ProductFeature.Queries.Get;
 using StoreApp.Application.Features.ProductFeature.Queries.GetAll;
 using StoreApp.Application.Features.ProductFeature.Queries.GetAllMostLiked;
@@ -110,6 +112,14 @@ namespace StoreApp.Web.Controllers
         {
             var result = await Mediator.Send(new DeleteReviewCommand { Id = id }, cancellationToken);
             return Ok(result);
+        }
+
+        [Authorize]
+        [HttpPost("toggle-wishlist/{productId}")]
+        public async Task<IActionResult> ToggleWishlist(int productId)
+        {
+            var result = await Mediator.Send(new ToggleWishlistCommand(productId));
+            return Ok(new { status = result });
         }
     }
 }

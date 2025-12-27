@@ -44,7 +44,8 @@ namespace StoreApp.Application.Features.ProductFeature.Commands.AddProductReview
                 UserId = userId,
                 Rating = request.Rating,
                 Comment = request.Comment,
-                Created = DateTime.UtcNow
+                Created = DateTime.UtcNow,
+                IsApproved = null
             };
 
             await unitOfWork.Repository<ProductReview>().AddAsync(review, cancellationToken);

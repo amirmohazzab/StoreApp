@@ -70,5 +70,8 @@ namespace StoreApp.Domain.Entities
 
         [JsonIgnore]
         public ProductCategory Category { get; set; }
+
+        [JsonIgnore]
+        public ICollection<UserWishlist> UserWishlists { get; set; } = new List<UserWishlist>();
     }
 }
