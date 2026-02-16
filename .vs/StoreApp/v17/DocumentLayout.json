@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\orderfeature\\commands\\create\\createordercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\orderfeature\\commands\\create\\createordercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\admin\\adminorderfeature\\commands\\updateorderstatuscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\admin\\adminorderfeature\\commands\\updateorderstatuscommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.web\\controllers\\admin\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54603906-EE2F-4BE5-8EA7-D24326E17B8C}|src\\StoreApp.Web\\StoreApp.Web.csproj|solutionrelative:src\\storeapp.web\\controllers\\admin\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\dtos\\admin\\adminorderdto\\adminorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\dtos\\admin\\adminorderdto\\adminorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|c:\\users\\dell\\desktop\\advanced dotnet projects\\storeapp\\storeapp\\src\\storeapp.application\\features\\admin\\adminorderfeature\\queries\\getall\\getadminordersqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B78BB2BF-8871-499E-8F2A-4B3C7AB39E6A}|src\\StoreApp.Application\\StoreApp.Application.csproj|solutionrelative:src\\storeapp.application\\features\\admin\\adminorderfeature\\queries\\getall\\getadminordersqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,74 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateOrderCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
-              "RelativeToolTip": "src\\StoreApp.Application\\Features\\OrderFeature\\Commands\\Create\\CreateOrderCommandHandler.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAG0AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T17:55:21.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetAdminOrdersQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Queries\\GetAll\\GetAdminOrdersQueryHandler.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Queries\\GetAll\\GetAdminOrdersQueryHandler.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Queries\\GetAll\\GetAdminOrdersQueryHandler.cs",
-              "RelativeToolTip": "src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Queries\\GetAll\\GetAdminOrdersQueryHandler.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAABgAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T14:15:00.229Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminOrderDto.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Dtos\\Admin\\AdminOrderDto\\AdminOrderDto.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Dtos\\Admin\\AdminOrderDto\\AdminOrderDto.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Dtos\\Admin\\AdminOrderDto\\AdminOrderDto.cs",
-              "RelativeToolTip": "src\\StoreApp.Application\\Dtos\\Admin\\AdminOrderDto\\AdminOrderDto.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T13:56:37.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdateOrderStatusCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Commands\\UpdateOrderStatusCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Commands\\UpdateOrderStatusCommandHandler.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Commands\\UpdateOrderStatusCommandHandler.cs",
-              "RelativeToolTip": "src\\StoreApp.Application\\Features\\Admin\\AdminOrderFeature\\Commands\\UpdateOrderStatusCommandHandler.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAiwB0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T08:03:56.525Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\Admin\\OrderController.cs",
-              "RelativeDocumentMoniker": "src\\StoreApp.Web\\Controllers\\Admin\\OrderController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\Advanced Dotnet Projects\\StoreApp\\StoreApp\\src\\StoreApp.Web\\Controllers\\Admin\\OrderController.cs",
-              "RelativeToolTip": "src\\StoreApp.Web\\Controllers\\Admin\\OrderController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwCcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:09:46.734Z",
-              "EditorCaption": ""
             }
           ]
         }

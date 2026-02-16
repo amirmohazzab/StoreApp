@@ -12,6 +12,6 @@ namespace StoreApp.Domain.Enums
         Confirmed,
         Shipped,
         Delivered,
-        Cancelled
+        Cancelled,
     }
 }

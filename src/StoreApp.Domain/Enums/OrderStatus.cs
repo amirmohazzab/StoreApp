@@ -25,6 +25,6 @@ namespace StoreApp.Domain.Enums
         Delivered,
 
         [EnumMember(Value = "Cancelled")]
-        Cancelled
+        Cancelled,
     }
 }

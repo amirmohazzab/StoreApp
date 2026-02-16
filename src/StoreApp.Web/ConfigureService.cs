@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using StoreApp.Application.Contracts;
 using StoreApp.Data.Persistence.Context;
@@ -66,8 +67,16 @@ namespace StoreApp.Web
             app.UseSwaggerDocumentation();
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseRouting();
+            app.UseStaticFiles();
+
+            // اگر میخوای فقط فولدر contact-attachments رو سرو کنی
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "contact-attachments")),
+                RequestPath = "/contact-attachments"
+            });
 
             app.UseCors("AllowAll");
 
@@ -77,7 +86,6 @@ namespace StoreApp.Web
             app.UseMiddleware<PermissionMiddleware>();
             app.UseAuthorization();
             
-
             app.MapControllers();
 
             //await app.RunAsync();

@@ -17,6 +17,32 @@
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "GetUserConversations",
+    "RelativePath": "api/Account/conversations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "MarkAdminMessagesAsRead",
+    "RelativePath": "api/Account/conversations/{id}/mark-admin-read",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
     "Method": "Login",
     "RelativePath": "api/Account/Login",
     "HttpMethod": "POST",
@@ -40,6 +66,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "MarkAsRead",
+    "RelativePath": "api/Account/messages/{messageId}/read",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "messageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.AccountController",
@@ -120,6 +162,199 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "StoreApp.Web.Controllers.AccountController",
+    "Method": "GetUserUnreadCount",
+    "RelativePath": "api/Account/user-unread-message-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "MarkRead",
+    "RelativePath": "api/admin/Contact/{id}/read",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "MarkUnread",
+    "RelativePath": "api/admin/Contact/{id}/unread",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "GetAdminUnreadCount",
+    "RelativePath": "api/admin/Contact/admin-unread-message-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "GetContactMessages",
+    "RelativePath": "api/admin/Contact/contact-messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IsRead",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "ChangeStatus",
+    "RelativePath": "api/admin/Contact/contact-messages/{id}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "isRead",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "GetConversations",
+    "RelativePath": "api/admin/Contact/conversations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IsRead",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "DeleteContactMessage",
+    "RelativePath": "api/admin/Contact/conversations/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "GetConversationMessages",
+    "RelativePath": "api/admin/Contact/conversations/{id}/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ContactController",
+    "Method": "Reply",
+    "RelativePath": "api/admin/Contact/conversations/{id}/reply",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attachments",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StoreApp.Web.Controllers.Admin.OrderController",
     "Method": "GetOrders",
     "RelativePath": "api/admin/Order",
@@ -165,6 +400,11 @@
       {
         "Name": "SortDesc",
         "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "BuyerPhoneNumber",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -582,6 +822,11 @@
         "Name": "PageSize",
         "Type": "System.Int32",
         "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -625,28 +870,28 @@
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
-    "Method": "ApproveReview",
-    "RelativePath": "api/admin/Product/review/approve",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "command",
-        "Type": "StoreApp.Application.Features.Admin.AdminApproveReview.Commands.ApproveReviewCommand",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
     "Method": "GetAtLeastOneReview",
     "RelativePath": "api/admin/Product/review/at-least-one-review",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.Admin.ProductController",
+    "Method": "ApproveReview",
+    "RelativePath": "api/admin/Product/review/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "StoreApp.Application.Features.Admin.AdminApproveReview.Commands.UpdateReviewStatusCommand",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -1286,6 +1531,42 @@
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.HomeController",
+    "Method": "AboutUs",
+    "RelativePath": "api/Home/about-us",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Subject",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attachment",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.HomeController",
     "Method": "GetAllProducts",
     "RelativePath": "api/Home/all",
     "HttpMethod": "GET",
@@ -1303,6 +1584,42 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.HomeController",
+    "Method": "SendMessage",
+    "RelativePath": "api/Home/contact-us",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Subject",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attachment",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.HomeController",
@@ -1796,6 +2113,38 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.UserController",
+    "Method": "GetConversationMessages",
+    "RelativePath": "api/User/conversations/{id}/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StoreApp.Web.Controllers.UserController",
+    "Method": "ReadAdminMessages",
+    "RelativePath": "api/User/conversations/{id}/read-admin-messages",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "StoreApp.Web.Controllers.UserController",

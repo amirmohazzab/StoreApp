@@ -24,5 +24,7 @@ namespace StoreApp.Application.Dtos.Admin.AdminOrderDto
         public string? SortBy { get; set; }   // مثلا "Created", "Total", "Status", "UserName"
 
         public bool SortDesc { get; set; } = false;
+
+        public string? BuyerPhoneNumber { get; set; }
     }
 }

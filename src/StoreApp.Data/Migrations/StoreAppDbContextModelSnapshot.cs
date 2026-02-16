@@ -195,6 +195,134 @@ namespace StoreApp.Data.Migrations
                     b.ToTable("CustomerBasketItems");
                 });
 
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactAttachment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ContactMessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContactMessageId");
+
+                    b.ToTable("ContactAttachments");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactConversation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("HasAdminReply")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsClosed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("Email", "Subject")
+                        .IsUnique();
+
+                    b.ToTable("ContactConversations");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ConversationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Sender")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConversationId");
+
+                    b.ToTable("ContactMessages");
+                });
+
             modelBuilder.Entity("StoreApp.Domain.Entities.Order.DeliveryMethod", b =>
                 {
                     b.Property<int>("Id")
@@ -630,6 +758,9 @@ namespace StoreApp.Data.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -866,11 +997,9 @@ namespace StoreApp.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AvatarPublicId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AvatarUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -1108,6 +1237,37 @@ namespace StoreApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Basket");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactAttachment", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Contact.ContactMessage", "ContactMessage")
+                        .WithMany("Attachments")
+                        .HasForeignKey("ContactMessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ContactMessage");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactConversation", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.User.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactMessage", b =>
+                {
+                    b.HasOne("StoreApp.Domain.Entities.Contact.ContactConversation", "Conversation")
+                        .WithMany("Messages")
+                        .HasForeignKey("ConversationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Conversation");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.Order.Order", b =>
@@ -1438,6 +1598,16 @@ namespace StoreApp.Data.Migrations
             modelBuilder.Entity("StoreApp.Domain.Entities.Basket.CustomerBasket", b =>
                 {
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactConversation", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("StoreApp.Domain.Entities.Contact.ContactMessage", b =>
+                {
+                    b.Navigation("Attachments");
                 });
 
             modelBuilder.Entity("StoreApp.Domain.Entities.Order.Order", b =>

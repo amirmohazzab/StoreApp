@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreApp.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,13 @@ namespace StoreApp.Application.Dtos.Admin.AdminProductReviewDto
         public string? Text { get; set; }
 
         //public ReviewStatus Status { get; set; } = ReviewStatus.Pending;
+
         public bool? IsApproved { get; set; }
 
         public int PageNumber { get; set; } = 1;
 
         public int PageSize { get; set; } = 5;
+
+        public FilterReviewStatus Status { get; set; } = FilterReviewStatus.All;
     }
 }

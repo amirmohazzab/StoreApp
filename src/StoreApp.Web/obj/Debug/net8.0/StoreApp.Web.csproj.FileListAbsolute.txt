@@ -156,7 +156,6 @@ C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.We
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\bin\Debug\net8.0\StoreApp.Data.pdb
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\bin\Debug\net8.0\StoreApp.Application.pdb
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\bin\Debug\net8.0\StoreApp.Domain.pdb
-C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\obj\Debug\net8.0\StoreApp.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\DELL\Desktop\Advanced Dotnet Projects\StoreApp\StoreApp\src\StoreApp.Web\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

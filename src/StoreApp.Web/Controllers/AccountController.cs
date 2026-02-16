@@ -11,6 +11,9 @@ using StoreApp.Application.Features.Account.Commands.CreateAddress;
 using StoreApp.Application.Features.Account.Commands.LoginUser;
 using StoreApp.Application.Features.Account.Commands.RegisterUser;
 using StoreApp.Application.Features.Account.Queries.GetAddresses;
+using StoreApp.Application.Features.Admin.AdminContactMessage.Command;
+using StoreApp.Application.Features.ContactMessageFeature.Command;
+using StoreApp.Application.Features.ContactMessageFeature.Query;
 using StoreApp.Application.Features.UserProfile.Commands;
 using StoreApp.Application.Features.UserProfile.Queries;
 using StoreApp.Domain.Entities.User;
@@ -102,6 +105,33 @@ namespace StoreApp.Web.Controllers
                 return BadRequest("Current password is incorrect or update failed.");
 
             return Ok(new { message = "Password changed successfully", token });
+        }
+
+        [HttpGet("conversations")]
+        public async Task<IActionResult> GetUserConversations(CancellationToken cancellationToken)
+        {
+            var result = await Mediator.Send(new GetContactConversationQuery(), cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpPut("messages/{messageId}/read")]
+        public async Task<IActionResult> MarkAsRead(int messageId)
+        {
+            await Mediator.Send(new MarkContactMessageAsReadCommand(messageId));
+            return Ok();
+        }
+
+        [HttpGet("user-unread-message-count")]
+        public async Task<IActionResult> GetUserUnreadCount()
+        {
+            return Ok(await Mediator.Send(new GetUserCountUnreadMessageQuery()));
+        }
+
+        [HttpPut("conversations/{id}/mark-admin-read")]
+        public async Task<IActionResult> MarkAdminMessagesAsRead(int id)
+        {
+            await Mediator.Send(new MarkAdminMessagesAsReadCommand(id));
+            return Ok();
         }
     }
 }

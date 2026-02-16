@@ -23,9 +23,9 @@ namespace StoreApp.Domain.Entities.User
 
         public string? MainRole { get; set; }
 
-        public string AvatarUrl { get; set; }
+        public string? AvatarUrl { get; set; }
 
-        public string AvatarPublicId { get; set; }
+        public string? AvatarPublicId { get; set; }
 
         public ICollection<UserPermission> UserPermissions { get; set; } = new List<UserPermission>();
 

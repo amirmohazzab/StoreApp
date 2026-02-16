@@ -5,6 +5,7 @@ using StoreApp.Application.Contracts;
 using StoreApp.Application.Dtos.Admin.AdminProductReviewDto;
 using StoreApp.Application.Wrappers;
 using StoreApp.Domain.Entities;
+using StoreApp.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,36 +57,10 @@ namespace StoreApp.Application.Features.Admin.AdminReview.Queries.GetAll
             if (f.ToDate.HasValue)
                 query = query.Where(x => x.Created != null && x.Created <= f.ToDate.Value);
 
-            //if (f.IsApproved.HasValue)
-            //{
-            //    query = query.Where(x => x.IsApproved == f.IsApproved);
-            //}
-
-            //if (f.IsApproved == null)
-            //{
-            //    // Pending → فقط null
-            //    query = query.Where(x => x.IsApproved == null);
-            //}
-            //else if (f.IsApproved == true)
-            //{
-            //    query = query.Where(x => x.IsApproved == true);
-            //}
-            //else if (f.IsApproved == false)
-            //{
-            //    query = query.Where(x => x.IsApproved == false);
-            //}
-            
-                if (f.IsApproved == null)
-                {
-                    // Pending
-                    query = query.Where(x => x.IsApproved == null);
-                }
-                else
-                {
-                    // Approved یا Rejected
-                    query = query.Where(x => x.IsApproved == f.IsApproved);
-                }
-           
+            if(f.Status != FilterReviewStatus.All)
+            {
+                query = query.Where(r => r.Status == f.Status);
+            }
 
             var total = await query.CountAsync(cancellationToken);
 
@@ -93,12 +68,6 @@ namespace StoreApp.Application.Features.Admin.AdminReview.Queries.GetAll
                 .OrderBy(x =>
                     x.IsApproved == null ? 0 : x.IsApproved == true ? 1 : 2)
                 .ThenByDescending(x => x.Created);
-
-            //query = query.OrderBy(x => x.IsApproved == null ? 0 : 1) 
-            //    .ThenByDescending(x => x.Created);
-
-            //query = query.OrderBy(x => x.IsApproved.HasValue)   
-            //        .ThenByDescending(x => x.Created);
 
             var pageNumber = f.PageNumber <= 0 ? 1 : f.PageNumber;
             var pageSize = f.PageSize <= 0 ? 5 : f.PageSize;

@@ -14,5 +14,7 @@ namespace StoreApp.Web.Services
 
         public string UserId { get => _contextAccessor?.HttpContext?.User.GetUserId() ?? string.Empty; }
         public string PhoneNumber { get => _contextAccessor?.HttpContext?.User.GetPhoneNumber() ?? string.Empty; }
+        public string Email { get => _contextAccessor?.HttpContext?.User.GetEmail() ?? string.Empty;
+        }
     }
 }

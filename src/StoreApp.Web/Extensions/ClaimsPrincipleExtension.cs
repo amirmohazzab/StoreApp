@@ -13,5 +13,11 @@ namespace StoreApp.Web.Extensions
         {
             return principal.FindFirst("PhoneNumber")?.Value;
         }
+
+        public static string GetEmail(this ClaimsPrincipal user)
+        {
+            return user?.Claims
+                .FirstOrDefault(x => x.Type == ClaimTypes.Email || x.Type == "email" || x.Type == "Email")?.Value ?? string.Empty;
+        }
     }
 }

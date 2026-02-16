@@ -39,34 +39,59 @@ namespace StoreApp.Application.Features.Admin.AdminOrderFeature.Queries.GetAll
 
             var f = request.Filter;
 
-            //if (!string.IsNullOrWhiteSpace(f.UserName))
-            //    query = query.Where(o => o.User != null && o.User.UserName.Contains(f.UserName));
+            if (!string.IsNullOrEmpty(f.BuyerPhoneNumber))
+                query = query.Where(o => o.User != null && o.BuyerPhoneNumber.Contains(f.BuyerPhoneNumber));
 
-            //if (f.Status.HasValue)
-            //    query = query.Where(o => o.OrderStatus == f.Status.Value);
+            if (f.Status.HasValue)
+                query = query.Where(o => o.OrderStatus == f.Status.Value);
 
-            //if (f.FromDate.HasValue)
-            //    query = query.Where(o => o.Created >= f.FromDate.Value);
+            if (f.FromDate.HasValue)
+                query = query.Where(o => o.Created >= f.FromDate.Value);
 
-            //if (f.ToDate.HasValue)
-            //    query = query.Where(o => o.Created <= f.ToDate.Value);
+            if (f.ToDate.HasValue)
+                query = query.Where(o => o.Created <= f.ToDate.Value);
 
-            if (!string.IsNullOrWhiteSpace(f.SortBy))
+            if (!string.IsNullOrEmpty(f.SortBy))
             {
                 query = f.SortBy switch
                 {
-                    "Created" => f.SortDesc ? query.OrderByDescending(o => o.Created) : query.OrderBy(o => o.Created),
-                    "Total" => f.SortDesc ? query.OrderByDescending(o => o.SubTotal + o.DeliveryMethod.Price)
-                                          : query.OrderBy(o => o.SubTotal + o.DeliveryMethod.Price),
-                    "Status" => f.SortDesc ? query.OrderByDescending(o => o.OrderStatus) : query.OrderBy(o => o.OrderStatus),
-                    "UserName" => f.SortDesc ? query.OrderByDescending(o => o.User.UserName) : query.OrderBy(o => o.User.UserName),
-                    _ => query.OrderByDescending(o => o.Created)
+                    "Id" => f.SortDesc
+                        ? query.OrderByDescending(x => x.Id)
+                        : query.OrderBy(x => x.Id),
+
+                    "BuyerPhoneNumber" => f.SortDesc
+                        ? query.OrderByDescending(x => x.BuyerPhoneNumber)
+                        : query.OrderBy(x => x.BuyerPhoneNumber),
+
+                    "OrderStatus" => f.SortDesc
+                        ? query.OrderByDescending(x => x.OrderStatus)
+                        : query.OrderBy(x => x.OrderStatus),
+
+                    "Created" => f.SortDesc
+                        ? query.OrderByDescending(x => x.Created)
+                        : query.OrderBy(x => x.Created),
+
+                    _ => query.OrderByDescending(x => x.Created)
                 };
             }
-            else
-            {
-                query = query.OrderByDescending(o => o.Created);
-            }
+
+            query = query.OrderByDescending(o => o.Created);
+            
+            //if (f.Status.HasValue)
+            //{
+            //    query = query.Where(o => o.OrderStatus == f.Status.Value);
+            //}
+            //else if (!string.IsNullOrEmpty(f.SortBy))
+            //{
+            //    query = f.SortDesc
+            //        ? query.OrderByDescending(e => EF.Property<object>(e, f.SortBy))
+            //        : query.OrderBy(e => EF.Property<object>(e, f.SortBy));
+            //}
+            //else
+            //{
+            //    query = query.OrderByDescending(o => o.Created);
+            //}
+
 
             var total = await query.CountAsync(cancellationToken);
 

@@ -5,6 +5,7 @@ using StoreApp.Application.Contracts;
 using StoreApp.Application.Dtos.ProductDto;
 using StoreApp.Application.Features.UserProfile.Commands;
 using StoreApp.Domain.Entities;
+using StoreApp.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,8 @@ namespace StoreApp.Application.Features.ProductFeature.Commands.AddProductReview
                 Rating = request.Rating,
                 Comment = request.Comment,
                 Created = DateTime.UtcNow,
-                IsApproved = null
+                IsApproved = null,
+                Status = FilterReviewStatus.Pending
             };
 
             await unitOfWork.Repository<ProductReview>().AddAsync(review, cancellationToken);

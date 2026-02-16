@@ -24,6 +24,7 @@ namespace StoreApp.Application.Features.UserProfile.Commands
         public string? State { get; set; }
         public string? FullAddress { get; set; }
         public string? PostalCode { get; set; }
+        public string? Email { get; set; }
     }
 
     public class EditUserProfileCommandHandler : IRequestHandler<EditUserProfileCommand, AddressDto>

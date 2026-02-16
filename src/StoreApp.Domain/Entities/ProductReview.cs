@@ -1,4 +1,5 @@
 ﻿using StoreApp.Domain.Entities.Base;
+using StoreApp.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,7 @@ namespace StoreApp.Domain.Entities
         public string Comment { get; set; }
 
         public bool? IsApproved { get; set; }
+
+        public FilterReviewStatus Status { get; set; } = FilterReviewStatus.Pending;
     }
 }

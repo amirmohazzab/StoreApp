@@ -94,8 +94,8 @@ namespace StoreApp.Web.Controllers.Admin
             return Ok(result);
         }
 
-        [HttpPut("review/approve")]
-        public async Task<IActionResult> ApproveReview([FromBody] ApproveReviewCommand command)
+        [HttpPut("review/update")]
+        public async Task<IActionResult> ApproveReview([FromBody] UpdateReviewStatusCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);

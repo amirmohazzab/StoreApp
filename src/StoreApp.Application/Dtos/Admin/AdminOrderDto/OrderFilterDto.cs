@@ -20,5 +20,7 @@ namespace StoreApp.Application.Dtos.Admin.AdminOrderDto
         public int PageNumber { get; set; } = 1;
 
         public int PageSize { get; set; } = 5;
+
+        public string? BuyerPhoneNumber { get; set; }
     }
 }

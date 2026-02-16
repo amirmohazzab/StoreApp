@@ -11,5 +11,7 @@ namespace StoreApp.Application.Contracts
         public string UserId { get; }
 
         public string PhoneNumber { get; }
+
+        public string Email { get; }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using StoreApp.Application.Contracts;
 using StoreApp.Application.Dtos.Account;
 using StoreApp.Application.Interfaces;
+using StoreApp.Domain.Entities.Contact;
 using StoreApp.Domain.Entities.User;
 using StoreApp.Domain.Exceptions;
 using System;
@@ -39,8 +40,10 @@ namespace StoreApp.Application.Features.Account.Commands.LoginUser
 
         public async Task<UserDto> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = await unitOfWork.Context.Set<User>()
-                .FirstOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber);
+            //var user = await unitOfWork.Context.Set<User>()
+            //    .FirstOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber);
+
+            var user = await userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber);
 
             if (user == null) throw new BadRequestEntityException("User Not Found, please sign in at the website");
 
@@ -56,7 +59,28 @@ namespace StoreApp.Application.Features.Account.Commands.LoginUser
 
             dto.Role = roles.FirstOrDefault() ?? "User";
 
+            //if (user.EmailConfirmed && user.Id != null) await AttachConversationsToUser(user, cancellationToken);
+            if (!string.IsNullOrEmpty(user.Email)) 
+            {
+                await AttachConversationsToUser(user, cancellationToken);
+            }
+
             return dto;
+        }
+
+        private async Task AttachConversationsToUser(User user, CancellationToken cancellationToken)
+        {
+            var conversations = await unitOfWork.Repository<ContactConversation>()
+                .GetQueryable()
+                .Where(x => x.Email.ToLower() == user.Email.ToLower() && x.UserId == null)
+                .ToListAsync();
+
+            foreach (var conv in conversations)
+            {
+                conv.UserId = user.Id;
+            }
+
+            await unitOfWork.Save(cancellationToken);
         }
     }
 }

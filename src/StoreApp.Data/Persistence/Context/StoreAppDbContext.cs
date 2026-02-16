@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using StoreApp.Domain.Entities;
 using StoreApp.Domain.Entities.Basket;
+using StoreApp.Domain.Entities.Contact;
 using StoreApp.Domain.Entities.Order;
 using StoreApp.Domain.Entities.User;
 using System;
@@ -58,6 +59,12 @@ namespace StoreApp.Data.Persistence.Context
 
         public DbSet<UserWishlist> Wishlists { get; set; }
 
+        public DbSet<ContactMessage> ContactMessages { get; set; }
+
+        public DbSet<ContactConversation> ContactConversations { get; set; }
+
+        public DbSet<ContactAttachment> ContactAttachments { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -76,6 +83,9 @@ namespace StoreApp.Data.Persistence.Context
             modelBuilder.Entity<ProductSize>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<ProductColor>().HasQueryFilter(p => p.IsDelete == false);
             modelBuilder.Entity<ProductImage>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ContactMessage>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ContactAttachment>().HasQueryFilter(p => p.IsDelete == false);
+            modelBuilder.Entity<ContactConversation>().HasQueryFilter(p => p.IsDelete == false);
         }
     }
 }
