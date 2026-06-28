@@ -34,6 +34,12 @@ Administrators can manage products, categories, orders, users, and other store-r
 - Role Management
 - Contact Message Management
 
+### Checkout Features
+
+- Checkout Address
+- Checkout Delivery
+- Checkout Review
+- Checkout Payment
 
 ## Technology Stack
 
@@ -63,13 +69,13 @@ Administrators can manage products, categories, orders, users, and other store-r
 ## Solution Structure
 
 StoreApp
-
+```
 ├── Angular (Frontend)
 ├── Api 
 ├── Infrastructure (Data) 
 ├── Application 
 └── Domain
-
+```
 ### StoreApp.Web
 
 Presentation layer responsible for:
@@ -117,6 +123,7 @@ Infrastructure layer responsible for:
 The application uses SQL Server and contains approximately 30 database tables covering:
 
 Products
+```
  ├── ProductImages
  ├── ProductReviews
  ├── ProductSizes
@@ -124,8 +131,9 @@ Products
  ├── ProductBrand
  ├── ProductcType
  └── ProductCategory
-
+```
 Users
+```
  ├── User
  ├── UserRole
  ├── UserPermission
@@ -135,8 +143,9 @@ Users
  ├── Permission
  ├── RolePermission
  └── Address
-
+```
 Orders
+```
  ├── Order
  ├── OrderItem
  ├── DeliveryMethod
@@ -144,21 +153,24 @@ Orders
  ├── ProductItemOrdered
  ├── Portal
  └── ShipToAddress
-
+```
  Contacts
+ ```
  ├── Contact
  ├── ContactConversation
  ├── ContactMessage
  └── ContactAttachment
-
+```
 Costomer
+```
  ├── CostomereBasket
  └── CostomerBasketItem
-
+```
  Base
+ ```
  ├── BaseEntity
  └── BaseAuditableEntity
-
+```
 ## Key Implementations
 
 - JWT/Identity-based Authentication
@@ -182,3 +194,9 @@ The application is deployed on shared hosting with SQL Server as the primary dat
 - Automated Testing
 - CI/CD Pipeline
 - Cloud Deployment
+
+<h2 align="center"> Main Page /h2>
+
+<p align="center">
+  <img src="main.png" width="1000"/>
+</p>
